@@ -7,6 +7,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Muskoka News">
     <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Muskoka Motorsport News</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -126,17 +129,32 @@
         }
     </style>
     <script>
-    // Auto-recarga en PWA (iPhone/Mac app) — cada 60 minutos busca versión nueva
+    // Auto-actualización PWA: compara version.txt remoto con versión local
+    // Si cambió → recarga la página completa (trae el HTML nuevo del servidor)
     (function() {
-        var KEY = 'muskoka_ts';
-        var UPD = 60 * 60 * 1000; // 1 hora
-        var now = Date.now();
-        var last = parseInt(localStorage.getItem(KEY) || '0');
-        localStorage.setItem(KEY, now);
-        if (last && (now - last) > UPD) {
-            // Forzar recarga desde servidor, ignorando caché
-            window.location.reload(true);
+        var VER_URL = 'https://pablomuskoka.github.io/muskoka-news/version.txt';
+        var KEY = 'muskoka_ver';
+        function checkUpdate() {
+            fetch(VER_URL + '?t=' + Date.now(), { cache: 'no-store' })
+                .then(function(r) { return r.text(); })
+                .then(function(v) {
+                    v = v.trim();
+                    var stored = localStorage.getItem(KEY);
+                    if (!stored) {
+                        localStorage.setItem(KEY, v);
+                    } else if (stored !== v) {
+                        localStorage.setItem(KEY, v);
+                        // Redirigir con parámetro de cache-bust para forzar descarga del HTML nuevo
+                        var base = window.location.href.split('?')[0];
+                        window.location.replace(base + '?v=' + v);
+                    }
+                })
+                .catch(function() {});
         }
+        // Verificar al cargar
+        checkUpdate();
+        // Verificar cada 5 minutos mientras la página está abierta
+        setInterval(checkUpdate, 5 * 60 * 1000);
     })();
     </script>
 </head>
