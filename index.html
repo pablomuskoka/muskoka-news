@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Muskoka News">
+    <meta name="format-detection" content="telephone=no">
     <title>Muskoka Motorsport News</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -121,6 +125,20 @@
             .nav-tab { padding: 10px 14px; font-size: 0.7rem; }
         }
     </style>
+    <script>
+    // Auto-recarga en PWA (iPhone/Mac app) — cada 60 minutos busca versión nueva
+    (function() {
+        var KEY = 'muskoka_ts';
+        var UPD = 60 * 60 * 1000; // 1 hora
+        var now = Date.now();
+        var last = parseInt(localStorage.getItem(KEY) || '0');
+        localStorage.setItem(KEY, now);
+        if (last && (now - last) > UPD) {
+            // Forzar recarga desde servidor, ignorando caché
+            window.location.reload(true);
+        }
+    })();
+    </script>
 </head>
 <body>
 
