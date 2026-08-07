@@ -4,133 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Muskoka News">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Muskoka Motorsport News</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #f0ede8; font-family: 'Source Sans 3', Arial, sans-serif; color: #1a1a1a; min-height: 100vh; }
+    /* ══ RESET & BASE ══ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #d4cfc6; font-family: 'Source Sans 3', Arial, sans-serif; color: #111; min-height: 100vh; }
 
-        .masthead { background: #fff; border-bottom: 4px solid #1a3a8f; padding: 18px 40px 14px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 3px 12px rgba(0,0,0,0.12); }
-        .masthead-rule-top { border: none; border-top: 2px solid #1a3a8f; margin-bottom: 10px; }
-        .masthead-name { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; color: #1a3a8f; letter-spacing: 2px; line-height: 1.1; }
-        .masthead-tagline { font-family: 'Source Sans 3', sans-serif; font-size: 0.78rem; color: #4a6fa5; letter-spacing: 5px; text-transform: uppercase; margin-top: 5px; }
-        .masthead-bar { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1a3a8f; border-bottom: 1px solid #1a3a8f; margin-top: 10px; padding: 5px 0; font-family: 'Source Sans 3', sans-serif; font-size: 0.75rem; color: #555; }
+    /* ══ NEWSPAPER PAGE WRAPPER ══ */
+    .np-page { max-width: 1240px; margin: 0 auto; background: #fff; box-shadow: 0 0 60px rgba(0,0,0,0.25); }
 
-        .container { max-width: 1240px; margin: 0 auto; padding: 28px 24px 0; }
+    /* ══ MASTHEAD ══ */
+    .masthead { padding: 18px 44px 14px; text-align: center; border-bottom: 4px solid #000; background: #fff; }
+    .masthead-eyebrow { font-size: 0.62rem; letter-spacing: 5px; text-transform: uppercase; color: #555; border-top: 1px solid #999; border-bottom: 1px solid #999; padding: 4px 0; margin-bottom: 10px; }
+    .masthead-name { font-family: 'Playfair Display', serif; font-size: 4.8rem; font-weight: 900; color: #000; line-height: 0.92; letter-spacing: -1px; }
+    .masthead-tagline { font-size: 0.64rem; letter-spacing: 5px; text-transform: uppercase; color: #666; margin-top: 10px; }
+    .masthead-bar { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; margin-top: 10px; padding: 5px 0; font-size: 0.71rem; color: #444; }
 
-        .highlight-section { background: linear-gradient(135deg, #0d2b6e 0%, #1a3a8f 60%, #2952b3 100%); color: white; padding: 22px 30px; margin-bottom: 30px; border-radius: 6px; box-shadow: 0 4px 16px rgba(26,58,143,0.3); }
-        .highlight-title { font-family: 'Playfair Display', serif; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.25); padding-bottom: 10px; margin-bottom: 18px; opacity: 0.85; }
-        .highlight-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .highlight-item { border-left: 2px solid rgba(255,255,255,0.25); padding-left: 16px; }
-        .highlight-sport-tag { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.65; margin-bottom: 6px; font-weight: 600; }
-        .highlight-item p { font-size: 0.88rem; line-height: 1.6; opacity: 0.92; }
+    /* ══ NAV ══ */
+    .np-nav { background: #fff; border-bottom: 3px solid #000; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+    .np-nav-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: center; align-items: stretch; padding: 0 44px; overflow-x: auto; scrollbar-width: none; gap: 0; }
+    .np-nav-inner::-webkit-scrollbar { display: none; }
+    .np-nav-tab { padding: 11px 20px; font-family: 'Playfair Display', serif; font-size: 0.88rem; font-style: italic; font-weight: 700; color: #444; text-decoration: none; border-bottom: 3px solid transparent; margin-bottom: -3px; white-space: nowrap; transition: color 0.15s, border-color 0.15s; cursor: pointer; background: none; border-top: none; border-left: none; border-right: none; }
+    .np-nav-tab:hover { color: #000; }
+    .np-nav-sep { color: #ccc; line-height: 1; align-self: center; padding: 0 2px; font-size: 1rem; }
+    .np-nav-tab.f1:hover,     .np-nav-tab.f1.active     { color: #CC0000; border-bottom-color: #CC0000; }
+    .np-nav-tab.motogp:hover, .np-nav-tab.motogp.active { color: #E05800; border-bottom-color: #E05800; }
+    .np-nav-tab.mx:hover,     .np-nav-tab.mx.active     { color: #1a5fa8; border-bottom-color: #1a5fa8; }
+    .np-nav-tab.salud:hover,  .np-nav-tab.salud.active  { color: #0d7b69; border-bottom-color: #0d7b69; }
+    .np-nav-tab.travel:hover, .np-nav-tab.travel.active { color: #7b4f00; border-bottom-color: #7b4f00; }
 
-        .section-header { display: flex; align-items: center; margin: 36px 0 18px; gap: 18px; }
-        .section-badge { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 7px 22px; border-radius: 3px; color: white; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .badge-f1       { background: #CC0000; }
-        .badge-motogp   { background: #E05800; }
-        .badge-mx-arg   { background: #2952b3; }
-        .badge-mx-world { background: #1b6b2e; }
-        .badge-travel   { background: #7b4f00; }
-        .section-line { flex: 1; height: 2px; border-radius: 1px; }
-        .line-f1       { background: linear-gradient(90deg, #CC0000, transparent); }
-        .line-motogp   { background: linear-gradient(90deg, #E05800, transparent); }
-        .line-mx-arg   { background: linear-gradient(90deg, #2952b3, transparent); }
-        .line-mx-world { background: linear-gradient(90deg, #1b6b2e, transparent); }
-        .line-travel   { background: linear-gradient(90deg, #7b4f00, transparent); }
+    /* ══ BREAKING BAR ══ */
+    .breaking-bar { background: #CC0000; color: #fff; padding: 6px 44px; display: flex; align-items: center; gap: 14px; font-size: 0.79rem; overflow: hidden; }
+    .breaking-label { background: #000; color: #fff; padding: 2px 10px; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
 
-        .ticker { background: #fff; border: 1px solid #c5d3f0; border-left: 4px solid #1a3a8f; border-radius: 4px; padding: 10px 18px; margin-bottom: 18px; display: flex; align-items: center; gap: 14px; font-size: 0.82rem; color: #333; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-        .ticker-label { background: #1a3a8f; color: white; padding: 3px 10px; border-radius: 3px; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; white-space: nowrap; }
+    /* ══ MAIN CONTENT AREA ══ */
+    .np-content { padding: 28px 44px 0; }
 
-        .featured-article { background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.09); margin-bottom: 20px; }
-        .featured-inner { display: grid; grid-template-columns: 3fr 2fr; }
-        .article-content { padding: 28px 30px; }
-        .article-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; }
-        .tag-f1       { color: #CC0000; }
-        .tag-motogp   { color: #E05800; }
-        .tag-mx-arg   { color: #2952b3; }
-        .tag-mx-world { color: #1b6b2e; }
-        .tag-travel   { color: #7b4f00; }
-        .article-title { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 14px; color: #0d0d0d; }
-        .article-body { font-size: 0.9rem; line-height: 1.75; color: #2a2a2a; }
-        .article-body p + p { margin-top: 10px; }
-        .article-quote { border-left: 3px solid #1a3a8f; padding: 10px 16px; margin: 14px 0; font-style: italic; color: #1a3a8f; background: #f0f4ff; font-size: 0.88rem; line-height: 1.5; border-radius: 0 3px 3px 0; }
-        .article-source { margin-top: 18px; padding-top: 10px; border-top: 1px solid #eee; font-size: 0.72rem; color: #999; }
-        .article-source a { color: #1a3a8f; text-decoration: none; font-weight: 600; }
-        .article-source a:hover { text-decoration: underline; }
+    /* ══ SECTION HEADERS (newspaper section masthead) ══ */
+    .np-section { margin: 40px 0 20px; scroll-margin-top: 64px; }
+    .np-section-rule-top { border: none; border-top: 5px solid #000; margin-bottom: 3px; }
+    .np-section-inner { display: flex; align-items: baseline; gap: 18px; border-bottom: 1px solid #bbb; padding-bottom: 7px; }
+    .np-section-title { font-family: 'Playfair Display', serif; font-size: 1.85rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; line-height: 1; }
+    .np-section-title.f1      { color: #CC0000; }
+    .np-section-title.motogp  { color: #E05800; }
+    .np-section-title.mx-arg  { color: #1a5fa8; }
+    .np-section-title.mx-world{ color: #1b6b2e; }
+    .np-section-title.travel  { color: #7b4f00; }
+    .np-section-title.salud   { color: #0d7b69; }
+    .np-section-sub { font-size: 0.78rem; font-style: italic; color: #777; }
 
-        .stats-panel { background: #0d1117; color: white; padding: 26px 22px; display: flex; flex-direction: column; gap: 0; }
-        .stats-panel h3 { font-family: 'Playfair Display', serif; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.12); color: #e0e0e0; }
-        .stats-panel hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 16px 0; }
-        .standings-table { width: 100%; }
-        .standings-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.82rem; }
-        .standings-row:last-child { border-bottom: none; }
-        .standings-pos { width: 30px; font-weight: 700; color: #777; font-size: 0.75rem; }
-        .standings-pos.gold { color: #FFD700; }
-        .standings-driver { flex: 1; font-weight: 600; font-size: 0.82rem; }
-        .standings-team { color: #666; font-size: 0.7rem; margin-right: 10px; }
-        .standings-pts { font-weight: 700; color: #4a90d9; font-size: 0.85rem; }
-        .calendar-list { font-size: 0.78rem; color: #ccc; line-height: 2; }
-        .calendar-list .next { color: #6fcf97; font-weight: 700; }
+    /* ══ INLINE TICKER ══ */
+    .np-ticker { border-top: 2px solid; border-bottom: 1px solid #ddd; padding: 7px 0; margin-bottom: 22px; display: flex; align-items: center; gap: 12px; font-size: 0.79rem; color: #222; }
+    .np-ticker.f1      { border-top-color: #CC0000; }
+    .np-ticker.motogp  { border-top-color: #E05800; }
+    .np-ticker.mx-world{ border-top-color: #1b6b2e; }
+    .np-ticker.salud   { border-top-color: #0d7b69; }
+    .np-ticker-label { padding: 2px 9px; font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: white; white-space: nowrap; flex-shrink: 0; }
+    .np-ticker.f1      .np-ticker-label { background: #CC0000; }
+    .np-ticker.motogp  .np-ticker-label { background: #E05800; }
+    .np-ticker.mx-world .np-ticker-label { background: #1b6b2e; }
+    .np-ticker.salud   .np-ticker-label { background: #0d7b69; }
 
-        .small-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
-        .small-article { background: white; padding: 22px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-top: 3px solid transparent; display: flex; flex-direction: column; }
-        .small-article.f1-border       { border-top-color: #CC0000; }
-        .small-article.motogp-border   { border-top-color: #E05800; }
-        .small-article.mx-arg-border   { border-top-color: #2952b3; }
-        .small-article.mx-world-border { border-top-color: #1b6b2e; }
-        .small-article.travel-border   { border-top-color: #7b4f00; }
-        .small-article .article-title { font-size: 1.05rem; margin-bottom: 10px; }
-        .small-article .article-body { font-size: 0.85rem; flex: 1; }
+    /* ══ NEWSPAPER COLUMN GRIDS ══ */
+    .np-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .np-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .np-grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; }   /* lead + sidebar */
+    .np-grid-1-2 { display: grid; grid-template-columns: 1fr 2fr; }
+    .np-col-w2 { grid-column: span 2; }
+    .np-col-w3 { grid-column: span 3; }
 
-        .footer { background: #0d1117; color: #777; text-align: center; padding: 24px 20px; margin-top: 48px; font-size: 0.78rem; line-height: 1.8; }
-        .footer-name { font-family: 'Playfair Display', serif; color: #4a90d9; font-size: 1rem; letter-spacing: 2px; }
+    .np-col { padding: 0 22px; border-right: 1px solid #c8b99a; }
+    .np-col:first-child { padding-left: 0; }
+    .np-col:last-child  { border-right: none; padding-right: 0; }
 
+    /* ══ ARTICLES WITHIN COLUMNS ══ */
+    .np-article { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid #d5c9b4; }
+    .np-article:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-        /* ── NAV TABS ── */
-        .nav-tabs { background: #fff; border-bottom: 2px solid #e8e8e8; position: sticky; top: 117px; z-index: 99; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-        .nav-tabs-inner { max-width: 1240px; margin: 0 auto; display: flex; padding: 0 24px; gap: 2px; overflow-x: auto; scrollbar-width: none; }
-        .nav-tabs-inner::-webkit-scrollbar { display: none; }
-        .nav-tab { padding: 12px 22px; font-family: 'Source Sans 3', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #777; text-decoration: none; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.18s, border-color 0.18s; cursor: pointer; background: none; border-top: none; border-left: none; border-right: none; }
-        .nav-tab:hover { color: #1a1a1a; }
-        .nav-tab.f1  { border-bottom-color: transparent; } .nav-tab.f1:hover,  .nav-tab.f1.active  { color: #CC0000; border-bottom-color: #CC0000; }
-        .nav-tab.motogp { } .nav-tab.motogp:hover, .nav-tab.motogp.active { color: #E05800; border-bottom-color: #E05800; }
-        .nav-tab.mx  { } .nav-tab.mx:hover,  .nav-tab.mx.active  { color: #2952b3; border-bottom-color: #2952b3; }
-        .nav-tab.salud { } .nav-tab.salud:hover, .nav-tab.salud.active { color: #0d7b69; border-bottom-color: #0d7b69; }
-        .nav-tab.travel { } .nav-tab.travel:hover, .nav-tab.travel.active { color: #7b4f00; border-bottom-color: #7b4f00; }
+    /* ══ TAGS / DATELINES ══ */
+    .np-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 4px; }
+    .np-tag.f1      { color: #CC0000; }
+    .np-tag.motogp  { color: #E05800; }
+    .np-tag.mx-arg  { color: #1a5fa8; }
+    .np-tag.mx-world{ color: #1b6b2e; }
+    .np-tag.travel  { color: #7b4f00; }
+    .np-tag.salud   { color: #0d7b69; }
+    .np-byline { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin: 6px 0 11px; padding-bottom: 8px; border-bottom: 1px solid #ddd; }
 
-        /* ── SALUD SECTION ── */
-        .badge-salud   { background: #0d7b69; }
-        .line-salud    { background: linear-gradient(90deg, #0d7b69, transparent); }
-        .tag-salud     { color: #0d7b69; }
-        .small-article.salud-border { border-top-color: #0d7b69; }
-        .article-quote.salud-quote  { border-left-color: #0d7b69; color: #0d7b69; background: #f0faf8; }
-        .highlight-item.salud-item { border-left-color: rgba(13,123,105,0.5); }
-        .salud-badge-inline { display: inline-block; background: #0d7b69; color: white; font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+    /* ══ HEADLINES ══ */
+    .hl-lead { font-family: 'Playfair Display', serif; font-size: 2.6rem; line-height: 1.05; font-weight: 700; margin-bottom: 10px; color: #000; }
+    .hl-xl   { font-family: 'Playfair Display', serif; font-size: 2rem;   line-height: 1.1;  font-weight: 700; margin-bottom: 8px;  color: #000; }
+    .hl-lg   { font-family: 'Playfair Display', serif; font-size: 1.55rem; line-height: 1.2; font-weight: 700; margin-bottom: 7px;  color: #000; }
+    .hl-md   { font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1.3; font-weight: 700; margin-bottom: 5px;  color: #000; }
+    .hl-sm   { font-family: 'Playfair Display', serif; font-size: 0.92rem; line-height: 1.4; font-weight: 700; margin-bottom: 4px;  color: #000; }
 
-        @media (max-width: 900px) {
-            .masthead-name { font-size: 2.2rem; }
-            .highlight-grid { grid-template-columns: repeat(2, 1fr); }
-            .featured-inner, .small-grid { grid-template-columns: 1fr; }
-            .nav-tabs { top: 90px; }
-        }
-        @media (max-width: 600px) {
-            .masthead { padding: 14px 16px 10px; }
-            .masthead-name { font-size: 1.7rem; letter-spacing: 1px; }
-            .container { padding: 16px 12px 0; }
-            .nav-tabs { top: 78px; }
-            .nav-tab { padding: 10px 14px; font-size: 0.7rem; }
-        }
+    /* ══ BODY TEXT ══ */
+    .np-body { font-size: 0.875rem; line-height: 1.75; color: #1f1f1f; text-align: justify; }
+    .np-body p + p { margin-top: 0.65em; }
+    .np-body.dropcap p:first-of-type::first-letter {
+        font-size: 3.2rem; font-family: 'Playfair Display', serif; font-weight: 700;
+        float: left; line-height: 0.75; margin: 5px 7px 0 0; color: #000;
+    }
+    .np-body-sm { font-size: 0.83rem; line-height: 1.68; color: #333; text-align: justify; margin-top: 8px; }
+
+    /* ══ PULL QUOTE ══ */
+    .np-pull { border-top: 3px solid #000; border-bottom: 1px solid #000; padding: 10px 0; margin: 14px 0; font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; line-height: 1.5; color: #000; }
+    .np-pull.f1     { border-top-color: #CC0000; color: #990000; }
+    .np-pull.motogp { border-top-color: #E05800; color: #a03a00; }
+    .np-pull.salud  { border-top-color: #0d7b69; color: #0d7b69; }
+
+    /* ══ SOURCE LINE ══ */
+    .np-source { margin-top: 10px; padding-top: 8px; border-top: 1px solid #e8e8e8; font-size: 0.67rem; color: #999; font-style: italic; }
+    .np-source a { color: #555; text-decoration: none; font-style: normal; }
+    .np-source a:hover { text-decoration: underline; }
+
+    /* ══ STATS BOX (newspaper style: cream, dark text) ══ */
+    .np-stats { background: #f5f1e8; border: 1px solid #c8b99a; border-top: 3px solid #000; padding: 16px; }
+    .np-stats.f1-top      { border-top-color: #CC0000; }
+    .np-stats.motogp-top  { border-top-color: #E05800; }
+    .np-stats.mx-top      { border-top-color: #1b6b2e; }
+    .np-stats.mx-arg-top  { border-top-color: #1a5fa8; }
+    .np-stats.salud-top   { border-top-color: #0d7b69; }
+    .np-stats.travel-top  { border-top-color: #7b4f00; }
+    .np-stats h4 { font-family: 'Playfair Display', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #111; margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid #c8b99a; }
+    .np-stats hr { border: none; border-top: 1px solid #c8b99a; margin: 12px 0; }
+    .np-row { display: flex; align-items: center; gap: 5px; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.07); font-size: 0.79rem; }
+    .np-row:last-child { border-bottom: none; }
+    .np-pos { width: 22px; font-weight: 700; color: #888; font-size: 0.7rem; flex-shrink: 0; }
+    .np-pos.gold { color: #9a7000; }
+    .np-name { flex: 1; font-weight: 600; color: #111; }
+    .np-team { color: #888; font-size: 0.68rem; }
+    .np-pts { font-weight: 700; color: #1a3a8f; font-size: 0.81rem; white-space: nowrap; }
+
+    /* ══ CALENDAR within stats ══ */
+    .np-cal { font-size: 0.76rem; color: #444; line-height: 2; }
+    .np-cal .next { color: #000; font-weight: 700; }
+    .np-cal .done { color: #aaa; text-decoration: line-through; }
+
+    /* ══ ROW SEPARATOR ══ */
+    .np-divider { border: none; border-top: 1px solid #c8b99a; margin: 26px 0; }
+
+    /* ══ HIGHLIGHT / NOTICE BOX (replaces gradient) ══ */
+    .np-notice { border: 2px solid #000; padding: 18px 22px 14px; margin-bottom: 30px; }
+    .np-notice-header { font-family: 'Playfair Display', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; border-bottom: 1px solid #000; padding-bottom: 9px; margin-bottom: 14px; }
+    .np-notice-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .np-notice-item { border-left: 3px solid #ccc; padding-left: 14px; }
+    .np-notice-item.f1      { border-left-color: #CC0000; }
+    .np-notice-item.motogp  { border-left-color: #E05800; }
+    .np-notice-item.mx      { border-left-color: #1b6b2e; }
+    .np-notice-item.salud   { border-left-color: #0d7b69; }
+    .np-notice-tag { font-size: 0.58rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #888; margin-bottom: 5px; }
+    .np-notice-text { font-size: 0.83rem; line-height: 1.55; color: #111; }
+
+    /* ══ FOOTER ══ */
+    .np-footer { background: #111; color: #777; text-align: center; padding: 28px 44px; margin-top: 50px; font-size: 0.77rem; line-height: 1.9; }
+    .np-footer-name { font-family: 'Playfair Display', serif; color: #ccc; font-size: 1.05rem; letter-spacing: 2px; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 960px) {
+        .np-grid-4, .np-grid-3, .np-grid-2-1, .np-grid-1-2 { grid-template-columns: 1fr; }
+        .np-col { border-right: none; padding: 0; }
+        .np-col + .np-col { border-top: 1px solid #c8b99a; margin-top: 22px; padding-top: 22px; }
+        .np-col-w2, .np-col-w3 { grid-column: span 1; }
+        .np-notice-grid { grid-template-columns: 1fr 1fr; }
+        .masthead-name { font-size: 3rem; }
+        .np-content { padding: 20px 22px 0; }
+        .masthead, .breaking-bar { padding-left: 22px; padding-right: 22px; }
+        .np-nav-inner { padding: 0 22px; }
+    }
+    @media (max-width: 560px) {
+        .masthead-name { font-size: 2rem; }
+        .hl-lead { font-size: 1.7rem; }
+        .hl-lg { font-size: 1.3rem; }
+        .np-notice-grid { grid-template-columns: 1fr; }
+    }
     </style>
     <script>
     // Auto-actualización PWA: compara version.txt remoto con versión local
-    // Si cambió → recarga la página completa (trae el HTML nuevo del servidor)
     (function() {
         var VER_URL = 'https://pablomuskoka.github.io/muskoka-news/version.txt';
         var KEY = 'muskoka_ver';
@@ -144,503 +201,248 @@
                         localStorage.setItem(KEY, v);
                     } else if (stored !== v) {
                         localStorage.setItem(KEY, v);
-                        // Redirigir con parámetro de cache-bust para forzar descarga del HTML nuevo
                         var base = window.location.href.split('?')[0];
                         window.location.replace(base + '?v=' + v);
                     }
                 })
                 .catch(function() {});
         }
-        // Verificar al cargar
         checkUpdate();
-        // Verificar cada 5 minutos mientras la página está abierta
         setInterval(checkUpdate, 5 * 60 * 1000);
     })();
     </script>
 </head>
 <body>
+<div class="np-page">
 
-
+<!-- ══ MASTHEAD ══ -->
 <header class="masthead">
-    <hr class="masthead-rule-top">
+    <div class="masthead-eyebrow">Deporte Motor Mundial · Pasión · Análisis · Desde Buenos Aires</div>
     <div class="masthead-name">Muskoka Motorsport News</div>
     <div class="masthead-tagline">Tu fuente diaria del deporte motor mundial</div>
     <div class="masthead-bar">
-        <span>Lunes, 3 de agosto de 2026</span>
-        <span>★&nbsp;&nbsp;F1 · MotoGP · MX Argentina · MX Mundial · Travesías&nbsp;&nbsp;★</span>
+        <span>Viernes, 3 de agosto de 2026</span>
+        <span>★ &nbsp;F1 · MotoGP · MX Argentina · MX Mundial · Travesías · Salud &nbsp;★</span>
         <span>Actualizado: 03/08/2026 — 16:00 hs</span>
     </div>
 </header>
 
-<!-- ── NAVEGACIÓN ── -->
-<nav class="nav-tabs">
-    <div class="nav-tabs-inner">
-        <button class="nav-tab f1"     onclick="irA('sec-f1',this)">🏎 Fórmula 1</button>
-        <button class="nav-tab motogp" onclick="irA('sec-motogp',this)">🏍 MotoGP</button>
-        <button class="nav-tab mx"     onclick="irA('sec-mx-arg',this)">🌎 Motocross</button>
-        <button class="nav-tab salud"  onclick="irA('sec-salud',this)">🔬 Salud</button>
-        <button class="nav-tab travel" onclick="irA('sec-travel',this)">🧭 Travesías</button>
+<!-- ══ NAV ══ -->
+<nav class="np-nav">
+    <div class="np-nav-inner">
+        <button class="np-nav-tab f1"     onclick="irA('sec-f1',this)">🏎 Fórmula 1</button>
+        <span class="np-nav-sep">|</span>
+        <button class="np-nav-tab motogp" onclick="irA('sec-motogp',this)">🏍 MotoGP</button>
+        <span class="np-nav-sep">|</span>
+        <button class="np-nav-tab mx"     onclick="irA('sec-mx-arg',this)">🌎 Motocross</button>
+        <span class="np-nav-sep">|</span>
+        <button class="np-nav-tab salud"  onclick="irA('sec-salud',this)">🔬 Salud</button>
+        <span class="np-nav-sep">|</span>
+        <button class="np-nav-tab travel" onclick="irA('sec-travel',this)">🧭 Travesías</button>
     </div>
 </nav>
 <script>
 function irA(id, btn) {
     const el = document.getElementById(id);
-    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.np-nav-tab').forEach(t => t.classList.remove('active'));
     if (btn) btn.classList.add('active');
 }
-// Highlight active section on scroll
 window.addEventListener('scroll', function() {
-    const sections = ['sec-f1','sec-motogp','sec-mx-arg','sec-salud','sec-travel'];
-    const tabs = { 'sec-f1':'f1','sec-motogp':'motogp','sec-mx-arg':'mx','sec-salud':'salud','sec-travel':'travel' };
-    let current = '';
-    sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 180) current = id;
-    });
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    if (current) { const t = document.querySelector('.nav-tab.' + tabs[current]); if(t) t.classList.add('active'); }
+    const ids = ['sec-f1','sec-motogp','sec-mx-arg','sec-salud','sec-travel'];
+    const cls = {'sec-f1':'f1','sec-motogp':'motogp','sec-mx-arg':'mx','sec-salud':'salud','sec-travel':'travel'};
+    let cur = '';
+    ids.forEach(id => { const el = document.getElementById(id); if (el && window.scrollY >= el.offsetTop - 80) cur = id; });
+    document.querySelectorAll('.np-nav-tab').forEach(t => t.classList.remove('active'));
+    if (cur) { const t = document.querySelector('.np-nav-tab.' + cls[cur]); if(t) t.classList.add('active'); }
 });
 </script>
 
-<div class="container">
+<!-- ══ BREAKING BAR ══ -->
+<div class="breaking-bar">
+    <span class="breaking-label">Última hora</span>
+    <span>GP Hungría R13 🏆 Norris (McLaren) · Verstappen 2° · Antonelli 3° · Colapinto P15 · F1 en pausa de verano, regresa Zandvoort R14 · 21-23 ago &nbsp;✦&nbsp; MotoGP: Silverstone R12 este fin de semana &nbsp;✦&nbsp; MXGP: Herlings lidera con 104 pts sobre Febvre · Coenen lesionado</span>
+</div>
 
-    <!-- LO MÁS IMPORTANTE -->
-    <div class="highlight-section">
-        <div class="highlight-title">★ &nbsp; Lo más importante del día</div>
-        <div class="highlight-grid">
-            <div class="highlight-item">
-                <div class="highlight-sport-tag">Fórmula 1</div>
-                <p>NORRIS GANA en Hungría (R13)! Primera victoria del año para el inglés — supera a Verstappen (+15s) y a Antonelli (+18.7s). El italiano entra al receso de verano con 219 pts y +50 sobre Hamilton. Colapinto P15, sin puntos. F1 regresa en Zandvoort R14 · 21-23 ago.</p>
+<!-- ══ MAIN CONTENT ══ -->
+<div class="np-content">
+
+    <!-- LO MÁS IMPORTANTE (newspaper-style notice box) -->
+    <div class="np-notice">
+        <div class="np-notice-header">★ &nbsp; Lo más importante del día &nbsp; ★</div>
+        <div class="np-notice-grid">
+            <div class="np-notice-item f1">
+                <div class="np-notice-tag">Fórmula 1</div>
+                <div class="np-notice-text">NORRIS GANA en Hungría (R13). Primera victoria del año para el inglés — supera a Verstappen (+15s) y a Antonelli (+18.7s). El italiano entra al receso de verano con 219 pts y +50 sobre Hamilton. Colapinto P15, sin puntos. F1 regresa en Zandvoort R14 · 21-23 ago.</div>
             </div>
-            <div class="highlight-item">
-                <div class="highlight-sport-tag">MotoGP</div>
-                <p>Márquez gana en Sachsenring y cierra a solo 18 pts de Martín. En 4 carreras pasó de -102 a -18. La próxima es Silverstone (R12), donde el título se puede decidir antes de tiempo. Ogura sigue 3° en el campeonato.</p>
+            <div class="np-notice-item motogp">
+                <div class="np-notice-tag">MotoGP</div>
+                <div class="np-notice-text">Márquez gana en Sachsenring y cierra a solo 18 pts de Martín. En 4 carreras pasó de -102 a -18. La próxima es Silverstone (R12), donde el título se puede decidir antes de tiempo. Ogura sigue 3° en el campeonato.</div>
             </div>
-            <div class="highlight-item">
-                <div class="highlight-sport-tag">Motocross Mundial</div>
-                <p>HERLINGS IMPARABLE en Flandes R14 (Lommel, 1-2 agosto): gana 1-1 y lidera con 675 pts. Coenen (566) sigue sin puntuar por lesión en cadera. Kay de Wolf 2°, Gajser 3°. Herlings supera a Febvre (571) por 104 pts. El título se le escapa a Coenen.</p>
+            <div class="np-notice-item mx">
+                <div class="np-notice-tag">MXGP</div>
+                <div class="np-notice-text">Herlings (Honda) arrasa en Flandes R14 con doblete 1-1. Consolida el liderazgo con 675 pts, +104 sobre Febvre. Coenen ausente por lesión de cadera. Kay de Wolf 2°, Gajser 3°.</div>
             </div>
-            <div class="highlight-item salud-item">
-                <div class="highlight-sport-tag">Salud & Ciencia</div>
-                <p>Fármaco experimental bloquea el cáncer de páncreas más común en un 90%+ (Florida A&amp;M, 30 julio). Nanopartículas de glicanos "vacunan" al sistema inmune contra tumores (CIC bioGUNE + UPV, 23 julio). CAR-T contra el Alzheimer reduce placas en modelos animales (Weizmann / WashU).</p>
+            <div class="np-notice-item salud">
+                <div class="np-notice-tag">Salud &amp; Ciencia</div>
+                <div class="np-notice-text">Julio 2026: NSL-YHJ-2-27 bloquea 90%+ del cáncer de páncreas (Florida A&amp;M). Nanopartículas de glicanos que "vacunan" al sistema inmune contra el cáncer (CIC bioGUNE/UPV). CAR-T reduce placas Alzheimer en animales (Weizmann/WashU).</div>
             </div>
         </div>
     </div>
 
-
-    <!-- ═══ FÓRMULA 1 ═══ -->
-    <div id="sec-f1" class="section-header" style="scroll-margin-top:170px;">
-        <span class="section-badge badge-f1">Fórmula 1</span>
-        <div class="section-line line-f1"></div>
+    <!-- ══════════════ F1 ══════════════ -->
+    <div id="sec-f1" class="np-section">
+        <div class="np-section-rule-top"></div>
+        <div class="np-section-inner">
+            <div class="np-section-title f1">Fórmula 1</div>
+            <div class="np-section-sub">Campeonato 2026 · 13 de 22 fechas disputadas · Receso de verano</div>
+        </div>
     </div>
 
-    <div class="ticker">
-        <span class="ticker-label">Resultado Final</span>
-        <span>GP de Hungría R13 🏆 Norris (McLaren) · 2° Verstappen +15.0s · 3° Antonelli +18.7s · 4° Leclerc +23.8s · 5° Hamilton +24.5s · 6° Hadjar · 7° Russell ✦ Colapinto P15 — 0 pts ✦ Pausa de verano — F1 regresa en Zandvoort R14 · 21-23 ago</span>
+    <div class="np-ticker f1">
+        <span class="np-ticker-label">Resultado Final</span>
+        <span>GP de Hungría R13 🏆 Norris (McLaren) · 2° Verstappen +15.0s · 3° Antonelli +18.7s · 4° Leclerc +23.8s · 5° Hamilton +24.5s · 6° Hadjar · 7° Russell &nbsp;✦&nbsp; Colapinto P15 — 0 pts &nbsp;✦&nbsp; Pausa de verano · Zandvoort R14 · 21-23 ago</span>
     </div>
 
-    <!-- F1 Nota 1: Hungría CARRERA resultado -->
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-f1">Carrera · GP Hungría 2026 · Hungaroring · Ronda 13/22</div>
-                <h2 class="article-title">Norris se lleva el Hungaroring — primera victoria del año para el inglés, Antonelli 3° y el campeonato entra al receso de verano</h2>
-                <div class="article-body">
-                    <p><strong>Lando Norris</strong> ganó el Gran Premio de Hungría 2026 en el Hungaroring y anotó su primera victoria de la temporada, superando a <strong>Max Verstappen</strong> (+15.0s) y a <strong>Kimi Antonelli</strong> (+18.7s). Fue el resultado más contundente del inglés en lo que va del año: una carrera dominada de punta a punta, tras una salida limpia que dejó atrás al resto. La única polémica del inicio involucró a su compañero <strong>Oscar Piastri</strong>, con quien tuvo un roce en las primeras vueltas que eliminó al australiano de la lucha.</p>
-                    <p><strong>Charles Leclerc</strong> terminó cuarto y <strong>Lewis Hamilton</strong> quinto — con una penalización de 5 segundos de por medio —, mientras que <strong>Isack Hadjar</strong> sumó puntos sólidos en sexto para Red Bull. <strong>George Russell</strong> remontó hasta el séptimo puesto tras un arranque complicado. <strong>Liam Lawson</strong>, <strong>Nico Hülkenberg</strong> y <strong>Arvid Lindblad</strong> completaron el top 10. <strong>Franco Colapinto</strong> cruzó en <strong>P15</strong>, con el Alpine dos vueltas abajo del ganador y sin puntos para su cuenta.</p>
-                    <div class="article-quote">"He estado esperando este momento toda la temporada. El auto funcionó perfecto hoy, el equipo hizo todo bien. Esta victoria era nuestra." — Lando Norris, ganador GP Hungría</div>
-                    <p><strong>Kimi Antonelli</strong> sigue siendo el líder del campeonato con <strong>219 puntos</strong>, <strong>+50 sobre Hamilton</strong> y +59 sobre Russell. La F1 entra ahora en el receso de verano y regresa el <strong>21-23 de agosto con el GP de Holanda R14 en Zandvoort</strong>, en formato Sprint. Un fin de semana que coincide exactamente con la fecha límite de la <strong>cláusula de Colapinto en Alpine</strong> (23/8).</p>
-                </div>
-                <div class="article-source">Fuentes: <a href="https://www.formula1.com/en/latest/article/norris-beats-verstappen-and-antonelli-to-victory-in-dramatic-hungarian-gp.5JQmohRAKABD2asRsMWogj" target="_blank">Formula1.com</a> · <a href="https://www.skysports.com/f1/news/12433/13567065/hungarian-gp-lando-norris-wins-first-race-of-2026-formula-1-season-after-early-oscar-piastri-squabble" target="_blank">Sky Sports</a> · <a href="https://www.the-race.com/formula-1/f1-2026-hungarian-grand-prix-results/" target="_blank">The Race — Resultado oficial</a></div>
+    <!-- F1 FILA 1: Lead (Hungary) + Standings sidebar -->
+    <div class="np-grid-2-1">
+
+        <!-- Lead article: Hungary GP -->
+        <div class="np-col np-col-w1">
+            <div class="np-tag f1">Carrera · Gran Premio de Hungría 2026 · Hungaroring · Ronda 13/22</div>
+            <h1 class="hl-lead">Norris arrasa en el Hungaroring y anota su primera victoria del año — Antonelli 3° y listo para el verano con 50 puntos de ventaja</h1>
+            <div class="np-byline">Muskoka Sport Desk · Budapest, 26 de julio de 2026</div>
+            <div class="np-body dropcap">
+                <p>Lando Norris dominó el Gran Premio de Hungría 2026 de principio a fin y logró su primera victoria de la temporada, superando a Max Verstappen en 15 segundos y a Kimi Antonelli en 18,7. La carrera en el Hungaroring tuvo como condimento un roce inicial entre el propio Norris y su compañero Oscar Piastri, que lo dejó al australiano fuera de la lucha por los puntos desde temprano en la carrera.</p>
+                <p>Charles Leclerc terminó cuarto y Lewis Hamilton quinto, con una penalización de 5 segundos de por medio. Isack Hadjar sumó puntos sólidos en sexto para Red Bull. George Russell remontó hasta el séptimo puesto. Liam Lawson, Nico Hülkenberg y Arvid Lindblad completaron el top 10. Franco Colapinto cruzó en P15 con el Alpine dos vueltas abajo del ganador, sin puntuar por segunda carrera consecutiva.</p>
+                <div class="np-pull f1">"He estado esperando este momento toda la temporada. El auto funcionó perfecto hoy, el equipo hizo todo bien. Esta victoria era nuestra." — Lando Norris, ganador del GP de Hungría</div>
+                <p>Kimi Antonelli entra al receso de verano con 219 puntos y una ventaja de 50 sobre Lewis Hamilton (169) y 59 sobre George Russell (160). El italiano de 19 años, en su debut en Mercedes, domina el campeonato con autoridad — pero en Hungría cedió el escalón más alto a un Norris que necesitaba urgentemente ese resultado para reactivar su temporada. Con nueve carreras por disputarse y el inicio previsto en Zandvoort el 21 de agosto, el campeonato sigue abierto.</p>
+                <p>El GP de Holanda tendrá formato Sprint, sumando puntos adicionales el sábado. La semana coincide exactamente con el vencimiento de la cláusula de opción de Franco Colapinto en Alpine, el 23 de agosto — lo que convierte ese fin de semana en doble tensión para el paddock argentino.</p>
             </div>
-            <div class="stats-panel">
-                <h3>🏁 Resultado — GP Hungría R13</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">P1</span>
-                        <span class="standings-driver">L. Norris 🏆</span>
-                        <span class="standings-team">McLaren</span>
-                        <span class="standings-pts" style="color:#f0a500;">+25pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P2</span>
-                        <span class="standings-driver">M. Verstappen</span>
-                        <span class="standings-team">Red Bull</span>
-                        <span class="standings-pts">+15.0s</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P3</span>
-                        <span class="standings-driver">K. Antonelli</span>
-                        <span class="standings-team">Mercedes</span>
-                        <span class="standings-pts">+18.7s</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P4</span>
-                        <span class="standings-driver">C. Leclerc</span>
-                        <span class="standings-team">Ferrari</span>
-                        <span class="standings-pts">+23.8s</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P5</span>
-                        <span class="standings-driver">L. Hamilton</span>
-                        <span class="standings-team">Ferrari</span>
-                        <span class="standings-pts">+24.5s</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P6</span>
-                        <span class="standings-driver">I. Hadjar</span>
-                        <span class="standings-team">Red Bull</span>
-                        <span class="standings-pts">+55.4s</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P7</span>
-                        <span class="standings-driver">G. Russell</span>
-                        <span class="standings-team">Mercedes</span>
-                        <span class="standings-pts">+57.5s</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P8</span>
-                        <span class="standings-driver">L. Lawson</span>
-                        <span class="standings-team">Racing Bulls</span>
-                        <span class="standings-pts">+1 vuelta</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P9</span>
-                        <span class="standings-driver">N. Hülkenberg</span>
-                        <span class="standings-team">Audi</span>
-                        <span class="standings-pts">+1 vuelta</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">P10</span>
-                        <span class="standings-driver">A. Lindblad</span>
-                        <span class="standings-team">Racing Bulls</span>
-                        <span class="standings-pts">+1 vuelta</span>
-                    </div>
-                    <div class="standings-row" style="opacity:0.65;">
-                        <span class="standings-pos">P15</span>
-                        <span class="standings-driver">F. Colapinto 🇦🇷</span>
-                        <span class="standings-team">Alpine</span>
-                        <span class="standings-pts" style="color:#888;">+2 vueltas</span>
-                    </div>
-                </div>
+            <div class="np-source">Fuentes: <a href="https://www.formula1.com/en/latest/article/norris-beats-verstappen-and-antonelli-to-victory-in-dramatic-hungarian-gp.5JQmohRAKABD2asRsMWogj" target="_blank">Formula1.com</a> · <a href="https://www.skysports.com/f1/news/12433/13567065/hungarian-gp-lando-norris-wins-first-race-of-2026-formula-1-season-after-early-oscar-piastri-squabble" target="_blank">Sky Sports</a> · <a href="https://www.the-race.com/formula-1/f1-2026-hungarian-grand-prix-results/" target="_blank">The Race</a></div>
+        </div>
+
+        <!-- Sidebar: Hungary results + Championship -->
+        <div class="np-col">
+            <div class="np-stats f1-top">
+                <h4>🏁 Resultado — GP Hungría R13</h4>
+                <div class="np-row"><span class="np-pos gold">P1</span><span class="np-name">L. Norris 🏆</span><span class="np-team">McLaren</span><span class="np-pts" style="color:#9a7000;">+25 pts</span></div>
+                <div class="np-row"><span class="np-pos">P2</span><span class="np-name">M. Verstappen</span><span class="np-team">Red Bull</span><span class="np-pts">+15.0s</span></div>
+                <div class="np-row"><span class="np-pos">P3</span><span class="np-name">K. Antonelli</span><span class="np-team">Mercedes</span><span class="np-pts">+18.7s</span></div>
+                <div class="np-row"><span class="np-pos">P4</span><span class="np-name">C. Leclerc</span><span class="np-team">Ferrari</span><span class="np-pts">+23.8s</span></div>
+                <div class="np-row"><span class="np-pos">P5</span><span class="np-name">L. Hamilton</span><span class="np-team">Ferrari</span><span class="np-pts">+24.5s</span></div>
+                <div class="np-row"><span class="np-pos">P6</span><span class="np-name">I. Hadjar</span><span class="np-team">Red Bull</span><span class="np-pts">+55.4s</span></div>
+                <div class="np-row"><span class="np-pos">P7</span><span class="np-name">G. Russell</span><span class="np-team">Mercedes</span><span class="np-pts">+57.5s</span></div>
+                <div class="np-row"><span class="np-pos">P8</span><span class="np-name">L. Lawson</span><span class="np-team">Racing Bulls</span><span class="np-pts">+1 vuelta</span></div>
+                <div class="np-row"><span class="np-pos">P9</span><span class="np-name">N. Hülkenberg</span><span class="np-team">Audi</span><span class="np-pts">+1 vuelta</span></div>
+                <div class="np-row"><span class="np-pos">P10</span><span class="np-name">A. Lindblad</span><span class="np-team">Racing Bulls</span><span class="np-pts">+1 vuelta</span></div>
+                <div class="np-row" style="opacity:0.6;"><span class="np-pos">P15</span><span class="np-name">F. Colapinto 🇦🇷</span><span class="np-team">Alpine</span><span class="np-pts" style="color:#888;">+2 vueltas</span></div>
                 <hr>
-                <h3>🏆 Campeonato — Tras Hungría (R13)</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1</span>
-                        <span class="standings-driver">K. Antonelli</span>
-                        <span class="standings-team">Mercedes</span>
-                        <span class="standings-pts">219</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">2</span>
-                        <span class="standings-driver">L. Hamilton</span>
-                        <span class="standings-team">Ferrari</span>
-                        <span class="standings-pts">169</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">3</span>
-                        <span class="standings-driver">G. Russell</span>
-                        <span class="standings-team">Mercedes</span>
-                        <span class="standings-pts">160</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">4</span>
-                        <span class="standings-driver">C. Leclerc</span>
-                        <span class="standings-team">Ferrari</span>
-                        <span class="standings-pts">138</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">5</span>
-                        <span class="standings-driver">L. Norris</span>
-                        <span class="standings-team">McLaren</span>
-                        <span class="standings-pts">128</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">6</span>
-                        <span class="standings-driver">M. Verstappen</span>
-                        <span class="standings-team">Red Bull</span>
-                        <span class="standings-pts">109</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">7</span>
-                        <span class="standings-driver">O. Piastri</span>
-                        <span class="standings-team">McLaren</span>
-                        <span class="standings-pts">92</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">8</span>
-                        <span class="standings-driver">I. Hadjar</span>
-                        <span class="standings-team">Red Bull</span>
-                        <span class="standings-pts">68</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">9</span>
-                        <span class="standings-driver">L. Lawson</span>
-                        <span class="standings-team">Racing Bulls</span>
-                        <span class="standings-pts">43</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">13</span>
-                        <span class="standings-driver">F. Colapinto 🇦🇷</span>
-                        <span class="standings-team">Alpine</span>
-                        <span class="standings-pts">19</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- F1 Nota 2: GP BÉLGICA — carrera completa -->
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-f1">GP Bélgica 2026 · Spa-Francorchamps · Ronda 10</div>
-                <h2 class="article-title">Spa en caos: Russell vuela en la vuelta 1, Hamilton penalizado — Antonelli gana su 6.ª carrera y abre brecha</h2>
-                <div class="article-body">
-                    <p>El Gran Premio de Bélgica fue uno de los más dramáticos de la temporada. En la primera vuelta, <strong>George Russell</strong> protagonizó una salida desastrosa desde la primera posición: al intentar recuperar terreno, colisionó con <strong>Lewis Hamilton</strong> y se retiró en el acto. Hamilton continuó pero la FIA le aplicó una penalización de 5 segundos por el incidente, relegándolo al cuarto lugar. La situación fue un regalo inesperado para <strong>Kimi Antonelli</strong>, que conducía desde atrás del caos y aprovechó el safety car virtual para una parada perfecta.</p>
-                    <p><strong>Charles Leclerc</strong> cruzó segundo, su tercera vez en el podio en las últimas cuatro carreras. <strong>Max Verstappen</strong> completó el podio desde una posición que pocos esperaban. <strong>Oscar Piastri</strong> fue quinto, <strong>Isack Hadjar</strong> sexto, <strong>Lando Norris</strong> séptimo. <strong>Franco Colapinto</strong> cerró los diez primeros para sumar otro punto vital.</p>
-                    <div class="article-quote">"Es genial volver al escalón más alto después de algunas rondas difíciles. El momentum siempre estuvo. Solo era cuestión de obtener los resultados." — Kimi Antonelli, ganador en Spa</div>
-                    <p>Con esta victoria Antonelli extendió su ventaja en el campeonato a 45 puntos sobre Hamilton y 50 sobre Russell. Mercedes domina el constructores con 358 pts, contra 285 de Ferrari. <strong>Sérgio Pérez</strong> abandonó el Cadillac en la vuelta 14 por problemas mecánicos; <strong>Valtteri Bottas</strong> también se retiró, dejando al equipo americano con cero puntos en diez fechas.</p>
-                </div>
-                <div class="article-source">Fuentes: <a href="https://www.aljazeera.com/sports/2026/7/19/kimi-antonelli-wins-belgian-grand-prix-to-extend-f1-championship-lead" target="_blank">Al Jazeera</a> · <a href="https://happyhourracing.com/blogs/news/f1-2026-season-so-far-antonelli-leads-mercedes-rolls-into-belgium" target="_blank">Happy Hour Racing</a></div>
-            </div>
-            <div class="stats-panel">
-                <h3>🏆 Resultado GP Bélgica</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1°</span>
-                        <span class="standings-driver">K. Antonelli</span>
-                        <span class="standings-team">Mercedes</span>
-                        <span class="standings-pts" style="color:#FFD700;">25 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">2°</span>
-                        <span class="standings-driver">C. Leclerc</span>
-                        <span class="standings-team">Ferrari</span>
-                        <span class="standings-pts">18 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">3°</span>
-                        <span class="standings-driver">M. Verstappen</span>
-                        <span class="standings-team">Red Bull</span>
-                        <span class="standings-pts">15 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">4°</span>
-                        <span class="standings-driver">L. Hamilton</span>
-                        <span class="standings-team">Ferrari</span>
-                        <span class="standings-pts" style="color:#e05800;">+5s pen.</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">5°</span>
-                        <span class="standings-driver">O. Piastri</span>
-                        <span class="standings-team">McLaren</span>
-                        <span class="standings-pts">10 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">6°</span>
-                        <span class="standings-driver">I. Hadjar</span>
-                        <span class="standings-team">Red Bull</span>
-                        <span class="standings-pts">8 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">7°</span>
-                        <span class="standings-driver">L. Norris</span>
-                        <span class="standings-team">McLaren</span>
-                        <span class="standings-pts">6 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">8°</span>
-                        <span class="standings-driver">G. Bortoleto</span>
-                        <span class="standings-team">Audi</span>
-                        <span class="standings-pts">4 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">9°</span>
-                        <span class="standings-driver">A. Lindblad</span>
-                        <span class="standings-team">Racing Bulls</span>
-                        <span class="standings-pts">2 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">10°</span>
-                        <span class="standings-driver">F. Colapinto 🇦🇷</span>
-                        <span class="standings-team">Alpine</span>
-                        <span class="standings-pts">1 pt</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="color:#e05800;">DNF</span>
-                        <span class="standings-driver">G. Russell</span>
-                        <span class="standings-team">Mercedes</span>
-                        <span class="standings-pts" style="color:#e05800;">Vuelta 1</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="color:#e05800;">DNF</span>
-                        <span class="standings-driver">S. Pérez</span>
-                        <span class="standings-team">Cadillac</span>
-                        <span class="standings-pts" style="color:#e05800;">V.14 mec.</span>
-                    </div>
-                </div>
+                <h4>🏆 Campeonato — Tras Hungría (R13)</h4>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">K. Antonelli</span><span class="np-team">Merc.</span><span class="np-pts">219</span></div>
+                <div class="np-row"><span class="np-pos">2</span><span class="np-name">L. Hamilton</span><span class="np-team">Ferrari</span><span class="np-pts">169</span></div>
+                <div class="np-row"><span class="np-pos">3</span><span class="np-name">G. Russell</span><span class="np-team">Merc.</span><span class="np-pts">160</span></div>
+                <div class="np-row"><span class="np-pos">4</span><span class="np-name">C. Leclerc</span><span class="np-team">Ferrari</span><span class="np-pts">138</span></div>
+                <div class="np-row"><span class="np-pos">5</span><span class="np-name">L. Norris</span><span class="np-team">McLaren</span><span class="np-pts">128</span></div>
+                <div class="np-row"><span class="np-pos">6</span><span class="np-name">M. Verstappen</span><span class="np-team">RBR</span><span class="np-pts">109</span></div>
+                <div class="np-row"><span class="np-pos">7</span><span class="np-name">O. Piastri</span><span class="np-team">McLaren</span><span class="np-pts">92</span></div>
+                <div class="np-row"><span class="np-pos">8</span><span class="np-name">I. Hadjar</span><span class="np-team">RBR</span><span class="np-pts">68</span></div>
+                <div class="np-row"><span class="np-pos">13</span><span class="np-name">F. Colapinto 🇦🇷</span><span class="np-team">Alpine</span><span class="np-pts">19</span></div>
                 <hr>
-                <div class="calendar-list">
-                    <div>Constructores: Mercedes 358 pts</div>
-                    <div>Ferrari 285 · McLaren 195</div>
-                    <div>Red Bull 151 · Racing Bulls 52</div>
-                    <div style="color:#e05800;">Cadillac 0 pts — 10 carreras</div>
+                <h4>📅 Próximas Fechas</h4>
+                <div class="np-cal">
+                    <div class="next">▶ Zandvoort Sprint R14 · 21-23 ago</div>
+                    <div>Monza · Singapur · Austin</div>
+                    <div>México · São Paulo · Las Vegas</div>
+                    <div>Qatar · Abu Dhabi — Final R22</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- F1 Nota 3: Hamilton/Leclerc — viral + "worlds away" -->
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-f1">Ferrari · Hamilton · Leclerc · Redes Sociales</div>
-                <h2 class="article-title">Hamilton renació en Ferrari: "Llegué a otro mundo desde 2025" — y Leclerc lo troleó con un micrófono ante 10 millones</h2>
-                <div class="article-body">
-                    <p>La relación entre <strong>Lewis Hamilton</strong> y <strong>Charles Leclerc</strong> dentro de Ferrari es uno de los grandes puntos de interés de la temporada. Antes del GP de Hungría, el equipo publicó un video que se convirtió en el hit del paddock: Leclerc, escondido detrás de una puerta, le acercó un micrófono de pértiga a Hamilton durante una entrevista. El siete veces campeón, sin saber que era su compañero, lo apartó de un manotazo con clara irritación. Al reconocer a Leclerc estalló en carcajadas. La revancha de Hamilton fue amenazar con revelar cuáles son los gustos de pizza de Leclerc frente a las cámaras italianas. <strong>"¡No en cámara! ¡Me voy con mi micrófono, tengo trabajo!"</strong>, huyó el monegasco.</p>
-                    <p>El video acumuló más de <strong>10,8 millones de visitas en Instagram</strong> y 930.000 en X, con miles de comentarios sobre la complicidad del dúo.</p>
-                    <div class="article-quote">"Un día, cuando haga mi documental, te contaré todo sobre ese fin de semana y lo que me llevó a estar ahí. Pero de donde venía... llego a otro mundo." — Lewis Hamilton sobre su 2025 en Ferrari vs. su 2026</div>
-                    <p>Y es que el contraste es impresionante. En 2025, Hamilton no ganó ningún Gran Premio, fue su temporada más difícil en décadas. En 2026 ya tiene una victoria (Barcelona), cuatro podios y está segundo en el campeonato a 45 puntos de Antonelli. Ferrari responde con más mejoras cada fecha: el SF-26 es un monoplaza completamente diferente. <strong>"El equipo hizo un trabajo increíble. Las piezas del rompecabezas que sabía que encajarían lo hicieron"</strong>, valoró Hamilton. Leclerc por su parte ganó en Silverstone y es cuarto con 126 pts. Vasseur tiene el mejor Ferrari en años.</p>
+    <hr class="np-divider">
+
+    <!-- F1 FILA 2: Belgium GP (secondary) + Hamilton/Ferrari viral + Colapinto -->
+    <div class="np-grid-3">
+
+        <!-- Col 1: Belgium GP -->
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag f1">GP Bélgica 2026 · Spa-Francorchamps · R12</div>
+                <h2 class="hl-lg">Antonelli aplasta en Spa — Russell se estrella en la vuelta 0 y el italiano abre brecha en el campeonato</h2>
+                <div class="np-byline">20 jul · Spa-Francorchamps, Bélgica</div>
+                <div class="np-body">
+                    <p>Kimi Antonelli ganó el Gran Premio de Bélgica 2026 en Spa-Francorchamps con una actuación de maestro, superando a Charles Leclerc en la vuelta 34 con un adelantamiento impecable en la recta de Kemmel. Fue la nueva demostración de que el italiano de 19 años no sólo es el más rápido del año, sino también el más frío bajo presión.</p>
+                    <p>El gran drama de la jornada comenzó en la vuelta de formación: George Russell colisionó con su compañero Lewis Hamilton al intentar defender su posición en la primera curva. El inglés quedó eliminado en el acto — vuelta 0. Hamilton recibió una penalización de cinco segundos que lo relegó al cuarto puesto final. Charles Leclerc cruzó segundo, su tercera vez en el podio en las últimas cuatro carreras. Max Verstappen completó el podio en tercero. Franco Colapinto cerró los diez primeros para sumar su 19° punto del año.</p>
+                    <div class="np-pull f1">"Es genial volver al escalón más alto. El momentum siempre estuvo — solo era cuestión de obtener los resultados." — Kimi Antonelli, ganador en Spa</div>
+                    <p>Mercedes domina el constructores con amplio margen sobre Ferrari. El episodio Russell/Hamilton abrió una grieta visible en el equipo de Brackley. Sérgio Pérez abandonó el Cadillac en la vuelta 14 por problemas mecánicos — el equipo americano sigue sin puntuar.</p>
                 </div>
-                <div class="article-source">Fuentes: <a href="https://www.motorsport.com/f1/news/charles-leclerc-pranks-lewis-hamilton-as-hilarious-ferrari-video-goes-viral/10841453/" target="_blank">Motorsport.com</a> · <a href="https://www.motorsportweek.com/2026/07/23/lewis-hamilton-ferrari-f1-worlds-away/" target="_blank">Motorsport Week</a> · <a href="https://www.formula1.com/en/latest/article/i-really-believe-we-can-fight-hamilton-more-focused-than-ever-amid-2026-title-push.37PSCNTGemxLDN95TtpQmO" target="_blank">Formula1.com</a></div>
+                <div class="np-source">Fuentes: <a href="https://es.motorsport.com/f1/news/cronica-resultados-carrera-belgica-spa-2026/10840158/" target="_blank">Motorsport.com</a> · <a href="https://www.formula1.com/en/results/2026/races/1290/belgium/race-result" target="_blank">Formula1.com</a></div>
             </div>
-            <div class="stats-panel">
-                <h3>🐎 Ferrari 2026 — Temporada</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos" style="color:#FFD700;">✓</span>
-                        <span class="standings-driver">Hamilton — Barcelona</span>
-                        <span class="standings-team">1.ª vic.</span>
-                        <span class="standings-pts" style="color:#FFD700;">25 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="color:#FFD700;">✓</span>
-                        <span class="standings-driver">Leclerc — Silverstone</span>
-                        <span class="standings-team">1.ª vic.</span>
-                        <span class="standings-pts" style="color:#FFD700;">25 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">2°</span>
-                        <span class="standings-driver">Leclerc — Spa</span>
-                        <span class="standings-team">podio</span>
-                        <span class="standings-pts">18 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">4°</span>
-                        <span class="standings-driver">Hamilton — Spa</span>
-                        <span class="standings-team">+5s pen.</span>
-                        <span class="standings-pts">12 pts</span>
-                    </div>
+
+            <div class="np-article">
+                <div class="np-tag f1">Red Bull · Hadjar · Rookie revelación</div>
+                <h3 class="hl-md">Hadjar humilla a Verstappen en el Hungaroring: el rookie llegó al Q3 y salió delante del tricampeón</h3>
+                <div class="np-byline">26 jul · Budapest</div>
+                <div class="np-body-sm">Isack Hadjar, 20 años, logró uno de los hitos personales más notables del fin de semana: alcanzó el Q3 en Hungría y salió en P8, cuatro posiciones delante de su compañero Verstappen. Con 68 puntos acumulados, el francés es el mejor rookie de 2026, muy por encima de Lindblad y Bortoleto. Mientras Verstappen explotaba contra el RB22, Hadjar extraía lo mejor del mismo auto.</div>
+                <div class="np-source"><a href="https://www.formula1.com/en/teams" target="_blank">Formula1.com — Equipos</a></div>
+            </div>
+        </div>
+
+        <!-- Col 2: Hamilton/Ferrari viral -->
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag f1">Ferrari · Hamilton · Leclerc · Redes sociales</div>
+                <h2 class="hl-lg">Hamilton renació en Ferrari: "Llegué a otro mundo desde 2025" — y Leclerc lo troleó ante 10 millones con un micrófono</h2>
+                <div class="np-byline">23 jul · Paddock de Hungría</div>
+                <div class="np-body">
+                    <p>La relación entre Lewis Hamilton y Charles Leclerc dentro de Ferrari es uno de los grandes puntos de interés de la temporada. Antes del GP de Hungría, el equipo publicó un video que se convirtió en el hit del paddock: Leclerc, escondido detrás de una puerta, le acercó un micrófono de pértiga a Hamilton durante una entrevista. El siete veces campeón lo apartó de un manotazo con clara irritación. Al reconocer a Leclerc estalló en carcajadas. La revancha de Hamilton fue amenazar con revelar los gustos de pizza de Leclerc ante las cámaras italianas. "¡No en cámara! ¡Me voy con mi micrófono, tengo trabajo!", huyó el monegasco.</p>
+                    <p>El video acumuló más de 10,8 millones de vistas en Instagram y 930.000 en X. El contraste con 2025 es impresionante: ese año Hamilton no ganó ninguna carrera. En 2026 ya tiene una victoria (Barcelona), cuatro podios y está segundo en el campeonato. Ferrari responde con nuevas mejoras cada fecha: el SF-26 es un monoplaza completamente diferente.</p>
+                    <div class="np-pull">"De donde venía... llegué a otro mundo. El equipo hizo un trabajo increíble." — Lewis Hamilton sobre su 2026 en Ferrari</div>
+                    <p>Leclerc ganó en Silverstone y es cuarto con 138 puntos. Vasseur tiene el mejor Ferrari en años. El dúo Hamilton-Leclerc es la dupla más entretenida del paddock 2026.</p>
                 </div>
+                <div class="np-source">Fuentes: <a href="https://www.motorsport.com/f1/news/charles-leclerc-pranks-lewis-hamilton-as-hilarious-ferrari-video-goes-viral/10841453/" target="_blank">Motorsport.com</a> · <a href="https://www.motorsportweek.com/2026/07/23/lewis-hamilton-ferrari-f1-worlds-away/" target="_blank">Motorsport Week</a></div>
+            </div>
+
+            <div class="np-article">
+                <div class="np-tag f1">Haas · Ocon · Bearman · Inconsistencia</div>
+                <h3 class="hl-md">Haas en crisis de consistencia: "No siempre es una pelea justa" — Ocon y Bearman señalan el caos interno</h3>
+                <div class="np-byline">26 jul · Budapest</div>
+                <div class="np-body-sm">El VF-26 de Haas es un misterio: el mismo auto funciona diferente cada fin de semana. Esteban Ocon fue brutal: "Solo hubo dos carreras donde funcionamos como esperábamos." Oliver Bearman fue igualmente crudo: "No siempre es una pelea justa. A veces competís con las manos atadas." En Hungría, Ocon tuvo un paquete nuevo y superó a Bearman por primera vez desde Mónaco. La situación interna es tensa y la comunicación entre pilotos, deficiente.</div>
+                <div class="np-source"><a href="https://www.formula1.com/en/latest/article/its-not-always-a-fair-fight-ocon-and-bearman-open-up-on-inconsistencies-that-have-impacted-haas-season.2iFlecTv8XVO4XWN1jQfX3" target="_blank">Formula1.com</a></div>
+            </div>
+        </div>
+
+        <!-- Col 3: Colapinto full story -->
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag f1">Franco Colapinto · Alpine · Futuro 2027 · GP Hungría</div>
+                <h2 class="hl-lg">Colapinto chocó, lo bancó Briatore y su cláusula vence el 23/8 — el verano que definirá su futuro en la F1</h2>
+                <div class="np-byline">24-26 jul · Budapest</div>
+                <div class="np-body">
+                    <p>El fin de semana húngaro empezó del peor modo para Franco Colapinto. A 27 minutos de iniciada la segunda práctica libre, el argentino perdió el control del Alpine en la última curva y golpeó contra la barrera. El equipo trabajó toda la noche para reparar el monoplaza. Colapinto había cedido su auto a Paul Aron en la FP1 obligatoria para rookies, lo que significa que solo tuvo 27 minutos de práctica real antes del accidente.</p>
+                    <p>La respuesta de Flavio Briatore fue inmediata y pública en redes: "Mañana es un nuevo día, Franco ❤️". Y lo que siguió validó el respaldo: Colapinto llegó a la clasificación, sobrevivió el Q1 en condiciones límite y se metió en el Q2, quedando a solo 0,183 segundos del Q3 — una hazaña dado el contexto. "El auto era difícil de conducir, pero después de ayer trabajamos bien y mejoramos", describió el piloto. La carrera fue otra historia: P15 a dos vueltas, sin puntuar.</p>
+                    <div class="np-pull">"Ojalá no tenga que esperar hasta el final de la temporada para saber qué pasa en 2027." — Franco Colapinto</div>
+                    <p>El mercado de pilotos no le da respiro. El contrato de Colapinto con Alpine incluye una cláusula que vence el 23 de agosto — exactamente el fin de semana del GP de Holanda. Si Alpine no confirma antes, queda libre para negociar con cualquier escudería. El argentino ya cenó con James Vowles, su ex jefe en Williams, disparando rumores de retorno. Sus números: 19 puntos en 7 carreras, 13° en el mundial.</p>
+                </div>
+                <div class="np-source">Fuentes: <a href="https://www.infobae.com/deportes/2026/07/24/contundente-respaldo-de-flavio-briatore-a-franco-colapinto-tras-su-accidente-en-el-gran-premio-de-hungria/" target="_blank">Infobae</a> · <a href="https://espanol.motorsport.com/f1/news/colapinto-futuro-alpine-2027-ojala-no-tenga-que-esperar/10839150/" target="_blank">Motorsport ES</a></div>
+            </div>
+
+            <!-- Colapinto standings box -->
+            <div class="np-stats f1-top">
+                <h4>🇦🇷 Colapinto 2026 — Carrera por carrera</h4>
+                <div class="np-row"><span style="font-size:0.65rem;width:30px;font-weight:600;">CHN</span><span class="np-name">China</span><span class="np-team">P10</span><span class="np-pts">1 pt</span></div>
+                <div class="np-row"><span style="font-size:0.65rem;width:30px;font-weight:600;">MIA</span><span class="np-name">Miami</span><span class="np-team">P7</span><span class="np-pts">6 pts</span></div>
+                <div class="np-row" style="background:rgba(154,112,0,0.08);"><span style="font-size:0.65rem;width:30px;font-weight:600;">CAN</span><span class="np-name">Canadá ⭐</span><span class="np-team">P6</span><span class="np-pts" style="color:#9a7000;">8 pts</span></div>
+                <div class="np-row"><span style="font-size:0.65rem;width:30px;font-weight:600;">ESP</span><span class="np-name">España</span><span class="np-team">P10</span><span class="np-pts">1 pt</span></div>
+                <div class="np-row"><span style="font-size:0.65rem;width:30px;font-weight:600;">GBR</span><span class="np-name">Gran Bretaña</span><span class="np-team">P9</span><span class="np-pts">2 pts</span></div>
+                <div class="np-row"><span style="font-size:0.65rem;width:30px;font-weight:600;">BEL</span><span class="np-name">Bélgica</span><span class="np-team">P10</span><span class="np-pts">1 pt</span></div>
+                <div class="np-row"><span style="font-size:0.65rem;width:30px;font-weight:600;">HUN</span><span class="np-name">Hungría</span><span class="np-team">P15</span><span class="np-pts" style="color:#888;">0 pts</span></div>
                 <hr>
-                <h3>📱 Viral del paddock</h3>
-                <div class="calendar-list" style="line-height:2;">
-                    <div style="color:#6fcf97;">📸 10,8M vistas Instagram</div>
-                    <div>Video Leclerc-micrófono-Hamilton</div>
-                    <div style="color:#f0a500;">930.000 vistas en X</div>
-                    <div>"No en cámara, LH. Me voy."</div>
-                    <div style="font-size:0.68rem; opacity:0.7;">Amenaza: revelar los gustos de pizza de Leclerc en Italia</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- F1 Artículos chicos fila 1: Antonelli, McLaren upgrade, Verstappen 2027 -->
-    <div class="small-grid">
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Mercedes · Antonelli · Campeonato</div>
-            <h3 class="article-title">Antonelli: seis victorias a los 19 años — Wolff ya lo llama "material de campeón del mundo"</h3>
-            <div class="article-body">
-                <p>Con 244 puntos, siete victorias y el campeonato casi asegurado, Kimi Antonelli es la figura dominante de 2026. Toto Wolff fue directo: <strong>"Absolutamente material de campeón del mundo."</strong> Mercedes renovó contrato a ambos pilotos para 2026; Russell, tercero con 154 pts, es su mejor escolta. En Hungría tuvieron su peor clasificación del año pero en carrera la remontada de Antonelli desde el séptimo será el gran espectáculo de la fecha.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/wolff-predicts-the-real-kimi-will-show-in-2026-after-antonellis-mercedes.50RKNgPy07paWLSimNDT2e" target="_blank">Formula1.com</a></div>
-        </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">McLaren · Norris · Piastri · Hungría</div>
-            <h3 class="article-title">McLaren llega a Hungría con su mayor upgrade del año — y Norris toma la pole que el equipo esperaba</h3>
-            <div class="article-body">
-                <p>Lando Norris reconoció estar <strong>"agradablemente sorprendido"</strong> por la pole: sus vueltas Q3 no fueron perfectas pero el nuevo paquete de mejoras funcionó. Andrea Stella definió el resultado como <strong>"fantástico y algo sorprendente."</strong> Piastri saldrá tercero aunque fue frenado ilegalmente por Hamilton en Q3. McLaren cero victorias en 11 carreras, con Norris como única chance real de título.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/norris-pleasantly-surprised-to-beat-very-quick-ferrari-drivers-to-hungarian-gp-pole.6YPCL7Vkk8SmT6imvLI0nc" target="_blank">Formula1.com</a></div>
-        </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Red Bull · Verstappen · Hungría · Contrato 2027</div>
-            <h3 class="article-title">Verstappen explota en Hungría: "El auto se degrada vuelta a vuelta" — y su futuro en Red Bull sigue siendo un misterio</h3>
-            <div class="article-body">
-                <p>La clasificación húngara fue la peor de la temporada para Verstappen. El neerlandés experimentó una degradación progresiva del RB22 que culminó en un trompo dramático en Q3: <strong>"El auto siguió empeorando y empeorando, vuelta tras vuelta. Cuando en vez de degradarse los neumáticos se degrada el auto, entonces tenés un problema grande."</strong> Fue más duro aún: <strong>"Solo giré y el auto no existe en la parte trasera. Es realmente una locura. El auto no se puede conducir así."</strong> Esta crisis técnica se suma a la incertidumbre sobre su futuro. Confirmado para 2026, sobre 2027 responde con silencio calculado: <strong>"No tengo nada que decir. No quiero tener que decir sí o no."</strong> Su cláusula de salida podría activarse si queda fuera del top 3 del mundial —matemáticamente posible—. Su nuevo interés por el endurance alimenta los rumores. El paddock espera su decisión durante el receso de verano.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.eldestapeweb.com/deportes/frase-verstappen-reaviva-dudas-futuro-red-bull-202672111032" target="_blank">El Destape</a> · <a href="https://readmotorsport.com/2026/07/22/verstappen-red-bull-2026-confirmed-2/" target="_blank">Read Motorsport</a></div>
-        </div>
-    </div>
-
-    <!-- F1 Nota 4: COLAPINTO — Alpine, crash FP2, futuro 2027 -->
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-f1">Franco Colapinto · Alpine · Futuro · GP Hungría</div>
-                <h2 class="article-title">Colapinto rompió el Alpine, Briatore lo bancó públicamente y su 2027 sigue sin definirse — la cláusula vence el 23/8</h2>
-                <div class="article-body">
-                    <p>El fin de semana húngaro empezó del peor modo para Franco Colapinto. A 27 minutos de iniciada la segunda práctica libre, el argentino perdió el control del Alpine en la última curva (la 13) y golpeó con la parte trasera contra la barrera. La sesión fue interrumpida con bandera roja. Colapinto había cedido su auto a Paul Aron en la FP1 obligatoria para rookies, lo que significa que solo tuvo 27 minutos de práctica real antes del accidente. El equipo trabajó toda la noche para reparar el monoplaza.</p>
-                    <p>La respuesta de <strong>Flavio Briatore</strong> fue inmediata y pública. El asesor ejecutivo de Alpine publicó en sus redes sociales: <strong>"Mañana es un nuevo día, Franco"</strong> acompañado de un corazón. Y lo que siguió validó el respaldo: Colapinto llegó a la clasificación, sobrevivió el Q1 en condiciones límite y se metió en el Q2, quedando a solo 0,183 segundos del Q3. Saldrá 13°. <strong>"Fue un día difícil. Perder tantas vueltas y casi no haber girado fue complicado, pero hoy trabajamos bien y mejoramos"</strong>, describió Colapinto. El argentino fue muy detallado al explicar lo que ocurrió en su vuelta decisiva del Q2: <strong>"Comenzamos la vuelta con los neumáticos muy fríos y ese fue el error. La última vuelta empezó muy mal. Fui muy lento en el primer sector porque no tenía agarre, pero después recuperé en el segundo y tercero."</strong> Sobre el comportamiento del Alpine, fue honesto: <strong>"El auto era difícil de conducir y un poco impredecible, como suele ocurrir. Ayer solamente pude completar tres o cuatro vueltas."</strong> Y con orgullo pero sin exagerar: <strong>"Nos falta en comparación con los autos de adelante; esa es la realidad. Pero estar delante de un Audi demuestra que trabajamos bien y maximizamos lo que tenemos."</strong></p>
-                    <div class="article-quote">"Ojalá no tenga que esperar hasta el final de la temporada para saber qué pasa en 2027." — Franco Colapinto sobre su futuro en Alpine</div>
-                    <p>El mercado de pilotos no le da respiro. El contrato de Colapinto con Alpine incluye una cláusula que vence el <strong>23 de agosto</strong> (GP de Holanda): si el equipo no confirma antes, queda libre para negociar con cualquier escudería. Briatore indicó que la decisión se tomaría entre Bélgica y Hungría, antes del receso de verano. Steve Nielsen dijo: <strong>"Si es lo suficientemente bueno, se quedará"</strong>. El argentino ya cenó con <strong>James Vowles</strong>, su ex jefe en Williams, disparando los rumores de retorno. Un cambio de foto de Instagram que lo comparó con Ayrton Senna también generó especulaciones sobre un movimiento a McLaren. Sus números hablan: 19 puntos en 6 carreras puntuables de 10, 12° en el campeonato.</p>
-                </div>
-                <div class="article-source">Fuentes: <a href="https://www.infobae.com/deportes/2026/07/24/contundente-respaldo-de-flavio-briatore-a-franco-colapinto-tras-su-accidente-en-el-gran-premio-de-hungria/" target="_blank">Infobae</a> · <a href="https://espanol.motorsport.com/f1/news/colapinto-futuro-alpine-2027-ojala-no-tenga-que-esperar/10839150/" target="_blank">Motorsport ES</a> · <a href="https://www.infobae.com/deportes/2026/07/09/toda-la-verdad-sobre-el-futuro-de-franco-colapinto-en-la-f1-por-que-alpine-debe-apurar-el-anuncio-como-titular-para-2027/" target="_blank">Infobae 2</a></div>
-            </div>
-            <div class="stats-panel">
-                <h3>🇦🇷 Colapinto 2026 — Resultados</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos" style="font-size:0.65rem; width:35px;">CHN</span>
-                        <span class="standings-driver">China</span>
-                        <span class="standings-team">P10</span>
-                        <span class="standings-pts">1 pt</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="font-size:0.65rem; width:35px;">MIA</span>
-                        <span class="standings-driver">Miami</span>
-                        <span class="standings-team">P7</span>
-                        <span class="standings-pts">6 pts</span>
-                    </div>
-                    <div class="standings-row" style="background:rgba(255,215,0,0.05);">
-                        <span class="standings-pos gold" style="font-size:0.65rem; width:35px;">CAN</span>
-                        <span class="standings-driver">Canadá ⭐</span>
-                        <span class="standings-team">P6</span>
-                        <span class="standings-pts" style="color:#FFD700;">8 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="font-size:0.65rem; width:35px;">ESP</span>
-                        <span class="standings-driver">España</span>
-                        <span class="standings-team">P10</span>
-                        <span class="standings-pts">1 pt</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="font-size:0.65rem; width:35px;">GBR</span>
-                        <span class="standings-driver">Gran Bretaña</span>
-                        <span class="standings-team">P9</span>
-                        <span class="standings-pts">2 pts</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="font-size:0.65rem; width:35px;">BEL</span>
-                        <span class="standings-driver">Bélgica</span>
-                        <span class="standings-team">P10</span>
-                        <span class="standings-pts">1 pt</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos" style="font-size:0.65rem; width:35px;">HUN</span>
-                        <span class="standings-driver">Hungría</span>
-                        <span class="standings-team">P15</span>
-                        <span class="standings-pts" style="color:#888;">0 pts</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="calendar-list">
-                    <div style="color:#f0a500; font-weight:700; font-size:0.82rem;">Total: 19 pts — 13° mundial</div>
+                <div class="np-cal">
+                    <div style="font-weight:700;color:#9a7000;">Total: 19 pts — 13° mundial</div>
                     <div>Alpine — Gasly / Colapinto</div>
-                    <div style="color:#e05800; font-weight:600;">⚠️ Cláusula 2027: vence 23/8</div>
+                    <div style="color:#CC0000;font-weight:600;">⚠️ Cláusula 2027: vence 23/8</div>
                     <div class="next">▶ Zandvoort Sprint R14 · 21-23 ago ←</div>
                     <div>Briatore: "Mañana es un nuevo día" ❤️</div>
                 </div>
@@ -648,402 +450,280 @@ window.addEventListener('scroll', function() {
         </div>
     </div>
 
-    <!-- F1 fila 2: Red Bull Hadjar, Racing Bulls, Audi -->
-    <div class="small-grid">
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Red Bull · Hadjar · Rookie revelación</div>
-            <h3 class="article-title">Hadjar humilla a Verstappen en Hungría: el rookie francés llegó al Q3 y saldrá delante del tricampeón</h3>
-            <div class="article-body">
-                <p>Isack Hadjar, 20 años, logró uno de los hitos personales más notables del fin de semana: alcanzó el Q3 en Hungría y saldrá P8 en la grilla, cuatro posiciones delante de su compañero Verstappen, que clasificó P6 pero en la grilla termina P4 por los movimientos generados por las penalizaciones a Hamilton y Antonelli. Mientras Verstappen explotaba contra el RB22, Hadjar extraía lo mejor del mismo auto. Con 52 puntos acumulados en la temporada, el francés es el mejor rookie de 2026, muy por encima de Lindblad (22), Bortoleto (que recién empieza a sumar) y el resto. <strong>"Este fin de semana ha sido un desafío, pero estamos en la dirección correcta"</strong>, señaló Hadjar. Su progresión consistente es una de las pocas certezas positivas de Red Bull en una temporada donde el equipo busca reencontrarse con el rendimiento que lo dominó en 2023-2025.</p>
+    <hr class="np-divider">
+
+    <!-- F1 FILA 3: Verstappen + Cadillac + Teams overview -->
+    <div class="np-grid-3">
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag f1">Red Bull · Verstappen · Futuro incierto</div>
+                <h2 class="hl-md">Verstappen explota en Hungría: "El auto se degrada vuelta a vuelta" — y su futuro en Red Bull sigue siendo un misterio</h2>
+                <div class="np-byline">26 jul · Budapest</div>
+                <div class="np-body-sm">Max Verstappen no ocultó su frustración después de la clasificación en el Hungaroring: el RB22 sigue siendo impredecible en gestión de neumáticos. "El degradado es brutal. No puedo defender bien porque en cuatro vueltas pierdo todo el agarre. Nada funciona como esperamos." La tensión en Red Bull es palpable: el equipo que dominó 2023-2025 ahora lucha por mantenerse en el top 6 del constructores. El futuro de Verstappen en la escudería de Milton Keynes sigue sin definirse para 2027, y el mercado de pilotos especula con un posible salto del neerlandés a Mercedes o Ferrari.</div>
+                <div class="np-source"><a href="https://www.eldestapeweb.com/deportes/frase-verstappen-reaviva-dudas-futuro-red-bull-202672111032" target="_blank">El Destape</a> · <a href="https://readmotorsport.com/2026/07/22/verstappen-red-bull-2026-confirmed-2/" target="_blank">Read Motorsport</a></div>
             </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/what-the-teams-said-qualifying-in-hungary-2026.3feA3778bfyv3miQvTeRha" target="_blank">Formula1.com</a></div>
         </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Racing Bulls · Lawson · Lindblad</div>
-            <h3 class="article-title">Racing Bulls y la dualidad del midfield: Lindblad en Q3, Lawson admite que "manejé muy mal" en Hungría</h3>
-            <div class="article-body">
-                <p>La revelación del midfield tiene nombre y apellido: <strong>Arvid Lindblad</strong>, el rookie sueco-inglés de 18 años, llegó al Q3 en Hungría con 1:18.281 y saldrá P9 en la grilla, superando a su compañero veterano Liam Lawson, que quedó en P11. Lindblad es directo sobre su clasificación: <strong>"Creo que hoy fue realmente positivo."</strong> Lawson, en cambio, fue brutalmente honesto consigo mismo: <strong>"Simplemente manejé muy mal en el Q2."</strong> El neozelandés acumula 30 puntos en el año (mejor resultado: P6 en Mónaco), frente a los 22 del rookie. El equipo va quinto en el campeonato de constructores con 52 puntos, superando a Alpine, Haas, Audi y todos los que siguen. Para un equipo que muchos veían como satélite, Racing Bulls ha demostrado ser una fuerza real en la parrilla 2026.</p>
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag f1">Cadillac · Pérez · Bottas · Cero puntos</div>
+                <h2 class="hl-md">Cadillac en llamas — literalmente: Bottas vio fuego en vuelta 2 en Austria y el equipo sigue sin puntuar</h2>
+                <div class="np-byline">30 jun · Red Bull Ring, Austria</div>
+                <div class="np-body-sm">El GP de Austria fue el ejemplo máximo de los dolores de crecimiento de Cadillac. Valtteri Bottas: "En vuelta 2, entrando a la 4, empecé a oler humo... ver humo... y de repente todo estaba en llamas." Sergio Pérez exigió cambios internos radicales: "No podemos tener este tipo de problemas. Espero una discusión interna masiva sobre nuestros procesos." Trece fechas, cero puntos. La curva de aprendizaje más dura del paddock 2026.</div>
+                <div class="np-source"><a href="https://www.formula1.com/en/latest/article/we-cannot-have-these-sort-of-issues-perez-and-bottas-reflect-on-cadillacs-problems-in-austrian-gp.3Bj6T1vNggLdhrU1MCAW8G" target="_blank">Formula1.com</a></div>
             </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/are-lawson-and-lindblads-performances-going-under-the-radar.gVLDoYqs8FMxQuaKIHoaX" target="_blank">Formula1.com</a></div>
         </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Audi · Bortoleto · Hülkenberg · Q3</div>
-            <h3 class="article-title">Audi se planta en el midfield: Bortoleto suma puntos consecutivos, Hülkenberg regresa al Q3</h3>
-            <div class="article-body">
-                <p><strong>Gabriel Bortoleto</strong> cerró Silverstone y Bélgica con P8 consecutivos —y firmó contrato largo con Audi—. <strong>"El equipo hizo un trabajo increíble, es fantástico tener este momentum"</strong>. <strong>Nico Hülkenberg</strong> llegó al Q3 en Hungría (P10) y declaró: <strong>"Me alegra volver al Q3 con una vuelta limpia."</strong> Aunque Hülkenberg sigue sin puntos en la temporada, el par muestra que Audi empieza a competir en serio.</p>
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag f1">Parrilla 2026 · 11 equipos · Constructores</div>
+                <h2 class="hl-md">El paddock del adiós: Hungría cierra la primera mitad y el receso de verano definirá contratos de 2027</h2>
+                <div class="np-byline">26 jul · Budapest</div>
+                <div class="np-body-sm">El paddock de Hungría tiene un sabor especial: es la última carrera antes del receso de verano y el ambiente es de "fin de curso". En Alpine, Pierre Gasly (P12) espera noticias de su compañía: su asiento está asegurado para 2027, no así el de Colapinto. Verstappen guarda silencio sobre Red Bull. Leclerc sobre su contrato con Ferrari: "Estoy aquí para ganar. Nada ha cambiado." El mercado de pilotos se resolverá durante el receso de verano.</div>
+                <div class="np-source"><a href="https://www.formula1.com/en/latest/article/paddock-insider-all-the-stories-that-got-the-hungary-paddock-talking.5IFn94N7TlM3yCACTa6ZtP" target="_blank">Formula1.com — Paddock Insider</a></div>
             </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/bortoleto-praises-incredible-work-by-audi-to-secure-back-to-back-p8-finishes.6YkWO6P0YRqp4kLSQm0P2E" target="_blank">Formula1.com</a></div>
+            <div class="np-stats f1-top" style="margin-top:16px;">
+                <h4>🏭 Constructores — Tras R13</h4>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">Mercedes</span><span class="np-pts">379</span></div>
+                <div class="np-row"><span class="np-pos">2</span><span class="np-name">Ferrari</span><span class="np-pts">307</span></div>
+                <div class="np-row"><span class="np-pos">3</span><span class="np-name">McLaren</span><span class="np-pts">220</span></div>
+                <div class="np-row"><span class="np-pos">4</span><span class="np-name">Red Bull</span><span class="np-pts">177</span></div>
+                <div class="np-row"><span class="np-pos">5</span><span class="np-name">Racing Bulls</span><span class="np-pts">80</span></div>
+                <div class="np-row" style="opacity:0.55;"><span class="np-pos">11</span><span class="np-name">Cadillac</span><span class="np-pts" style="color:#CC0000;">0 pts</span></div>
+            </div>
         </div>
     </div>
 
-    <!-- F1 fila 3: Aston Martin Newey, Williams Sainz, Haas -->
-    <div class="small-grid">
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Aston Martin · Newey · Alonso · 16 upgrades · Hungría</div>
-            <h3 class="article-title">Alonso y Newey celebran en Aston Martin: "El auto se siente mucho mejor" — 16 mejoras y por fin el Q2</h3>
-            <div class="article-body">
-                <p>Adrian Newey presentó para Hungría el mayor paquete técnico de la temporada: 16 modificaciones aerodinámicas que, según él, son <strong>"solo la primera parte"</strong> de un proceso de transformación del AMR26 dividido en tres etapas. El legendario diseñador fijó como meta inmediata <strong>"llegar a un punto de respetabilidad"</strong>. El resultado fue inmediato: <strong>Fernando Alonso</strong> regresó al Q2 por primera vez en 2026. El español no ocultó su alivio: <strong>"El auto se siente mucho mejor. Mucho mejor. Se siente más pegado al suelo, más fácil de conducir. Lo que pensábamos que haría el nuevo paquete al auto, se traslada a la realidad en pista."</strong> Alonso también destacó el cambio en el ambiente interno del equipo: <strong>"Hay una atmósfera positiva ahora en la fábrica. Este paquete cambió la dinámica."</strong> Y sobre el futuro añadió: <strong>"Hay más potencial por sacar. Este es un primer paso de cosas buenas que vienen."</strong> Newey, con los pies en la tierra pero optimista, considera que el salto es real: de estar a dos segundos del pelotón a meterse en Q2 es el comienzo de la remontada.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/newey-sets-immediate-goal-for-aston-martin-as-he-gives-initial-verdict-on-hungary-update-package.4XerNjxzEyCjFBeaMqlZWr" target="_blank">Formula1.com</a></div>
-        </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Williams · Sainz · Albon · Crisis FW48</div>
-            <h3 class="article-title">Sainz: "Estoy asqueado y preocupado" — Williams, el mayor fiasco del nuevo reglamento</h3>
-            <div class="article-body">
-                <p>Carlos Sainz no se guarda nada: <strong>"Estoy asqueado y preocupado"</strong> con el FW48, que llegó sobrepeso, sin completar el shakedown de Barcelona —único equipo que no dio ninguna vuelta— y siempre al fondo. En otra frase viral, lo llamó <strong>"un mal año, francamente."</strong> En Hungría ambos en Q1, Sainz P18, Albon P19. En 2025 estaban a tres décimas de la pole regularmente. La caída es histórica.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.motorbiscuit.com/carlos-sainz-on-williams-2026-struggles-disgusted-worried/" target="_blank">MotorBiscuit</a> · <a href="https://sports.yahoo.com/articles/carlos-sainz-gets-brutally-honest-125413027.html" target="_blank">Yahoo Sports</a></div>
-        </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Haas · Ocon · Bearman · Inconsistencia</div>
-            <h3 class="article-title">Ocon y Bearman se sinceran sobre el caos en Haas: "No siempre es una pelea justa, a veces competís con las manos atadas"</h3>
-            <div class="article-body">
-                <p>El VF-26 de Haas es un misterio de ingeniería: el mismo auto funciona diferente cada fin de semana, y no siempre los dos pilotos reciben las mismas piezas. <strong>Esteban Ocon</strong> fue brutalmente directo: <strong>"Solo hubo dos carreras donde funcionamos como esperábamos."</strong> <strong>Oliver Bearman</strong> fue igualmente crudo: <strong>"No siempre es una pelea justa. A veces sentís que competís con las manos atadas. El auto puede ser increíble un fin de semana y desaparecer al siguiente."</strong> En Hungría, Haas le montó a Ocon un nuevo paquete de ala trasera y piso que le permitió superar al joven inglés por primera vez desde Mónaco: Ocon saldrá P15, Bearman P17 —eliminado en Q1—. La situación interna es tensa: ambos pilotos reconocen que sin consistencia técnica es imposible planificar el rendimiento, y el equipo no comunica bien qué piezas tiene quién. Una narrativa complicada para un equipo que en 2025 llegó a pelear el top 5 de constructores.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/its-not-always-a-fair-fight-ocon-and-bearman-open-up-on-inconsistencies-that-have-impacted-haas-season.2iFlecTv8XVO4XWN1jQfX3" target="_blank">Formula1.com</a></div>
+    <!-- ══════════════ MOTOGP ══════════════ -->
+    <div id="sec-motogp" class="np-section">
+        <div class="np-section-rule-top"></div>
+        <div class="np-section-inner">
+            <div class="np-section-title motogp">MotoGP</div>
+            <div class="np-section-sub">Campeonato 2026 · 11 de 21 fechas disputadas · Cuatro pilotos en 22 puntos</div>
         </div>
     </div>
 
-    <!-- F1 fila 4: Cadillac fuego, Alpine/Gasly, Constructores -->
-    <div class="small-grid">
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Cadillac · Pérez · Bottas · Fuego · Austria</div>
-            <h3 class="article-title">Cadillac en llamas — literalmente: Bottas vio humo en vuelta 2 y el Cadillac se incendió en Austria</h3>
-            <div class="article-body">
-                <p>El GP de Austria fue el ejemplo máximo de los dolores de crecimiento de Cadillac. <strong>Valtteri Bottas</strong>: <strong>"En vuelta 2, entrando a la 4, empecé a oler humo... ver humo... y de repente todo estaba en llamas."</strong> <strong>Sergio Pérez</strong> exigió cambios internos radicales: <strong>"No podemos tener este tipo de problemas. Espero una discusión interna masiva sobre nuestros procesos."</strong> Diez fechas, cero puntos. La curva de aprendizaje más dura del paddock.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/we-cannot-have-these-sort-of-issues-perez-and-bottas-reflect-on-cadillacs-problems-in-austrian-gp.3Bj6T1vNggLdhrU1MCAW8G" target="_blank">Formula1.com</a></div>
-        </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Alpine · Gasly · Hungría · Paddock</div>
-            <h3 class="article-title">El paddock del adiós: Hungría cierra la primera mitad y el verano definirá contratos de 2027</h3>
-            <div class="article-body">
-                <p>El paddock de Hungría tiene un sabor especial: es la última carrera antes del receso de verano y el ambiente es de <em>"fin de curso"</em>. En Alpine, <strong>Pierre Gasly</strong> (P12) espera noticias de su compañía: su asiento está asegurado para 2027, no así el de Colapinto. Verstappen sobre Red Bull: en silencio. Leclerc sobre su contrato con Ferrari: <strong>"Estoy aquí para ganar. Nada ha cambiado."</strong> El mercado de pilotos se resolverá durante el receso.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/latest/article/paddock-insider-all-the-stories-that-got-the-hungary-paddock-talking.5IFn94N7TlM3yCACTa6ZtP" target="_blank">Formula1.com Paddock Insider</a></div>
-        </div>
-        <div class="small-article f1-border">
-            <div class="article-tag tag-f1">Parrilla 2026 · 11 equipos · Todos</div>
-            <h3 class="article-title">Los 11 equipos 2026: la revolución técnica reordenó el pelotón desde Australia</h3>
-            <div class="article-body">
-                <p>El nuevo reglamento técnico creó ganadores inesperados (Mercedes, Ferrari, Racing Bulls) y perdedores temporales (Red Bull, McLaren, Williams). Cadillac, el equipo 11, debutó con valentía pero cero puntos. Audi lleva puntos pero Hülkenberg no los puntúa. El orden: <strong>Mercedes → Ferrari → McLaren → Red Bull → Racing Bulls → Alpine → Haas → Audi → Aston Martin → Williams → Cadillac.</strong></p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.formula1.com/en/teams" target="_blank">Formula1.com — Equipos</a></div>
-        </div>
+    <div class="np-ticker motogp">
+        <span class="np-ticker-label">Última carrera</span>
+        <span>Sachsenring R11 🏆 Márquez (Ducati) · Martín 2° · Ogura 3° · Campeonato: Martín 208, Ogura 194, Márquez 190, Bezzecchi 186 · ¡4 pilotos en 22 pts! &nbsp;✦&nbsp; ESTA SEMANA: Silverstone R12 · 7-9 agosto</span>
     </div>
 
-
-    <!-- ═══ MOTOGP ═══ -->
-    <div id="sec-motogp" class="section-header" style="scroll-margin-top:170px;">
-        <span class="section-badge badge-motogp">MotoGP</span>
-        <div class="section-line line-motogp"></div>
-    </div>
-
-    <div class="ticker">
-        <span class="ticker-label">Última carrera</span>
-        <span>Última carrera: Sachsenring R11 🏆 Márquez (Ducati) · Martín 2° · Ogura 3° · Campeonato: Martín 208, Ogura 194, Márquez 190 · 4 pilotos en 24 pts ✦ ESTA SEMANA: Silverstone R12 · 7-9 agosto</span>
-    </div>
-
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-motogp">Mercado de pilotos · 2027</div>
-                <h2 class="article-title">Quartararo a Honda y Alonso debuta: el mercado 2027 sacude toda la parrilla de MotoGP</h2>
-                <div class="article-body">
-                    <p>La parrilla de MotoGP para 2027 empieza a tomar forma y los movimientos son sísmicos. El más resonante: <strong>Fabio Quartararo</strong>, campeón mundial de 2021, abandona Yamaha para sumarse a <strong>Honda HRC</strong> el año próximo. El francés, que nunca recuperó el nivel de su temporada dorada, apuesta por una marca en reconstrucción que busca volver a pelear por el título.</p>
-                    <p>La otra bomba del mercado es <strong>David Alonso</strong>, el colombiano de 18 años que arrasó en Moto3 y se convierte en uno de los pilotos más jóvenes en dar el salto directo a MotoGP. Firma un contrato multianual con Honda Racing Corporation, en una decisión que sorprendió a todo el paddock.</p>
-                    <div class="article-quote">"La parrilla empieza a tomar forma para la nueva era de MotoGP en 2027. Hay movimientos en todos los equipos." — MotoGP.com oficial</div>
-                    <p>También regresará a la acción <strong>Takanori Nakagami</strong> como wildcard en Motegi, su Gran Premio de casa. El veterano japonés vuelve a competir ante el público que lo adora.</p>
-                </div>
-                <div class="article-source">Fuentes: <a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP Oficial</a> · <a href="https://es.motorsport.com/motogp/news/calendario-motogp-2026-temporada-carreras/10744475/" target="_blank">Motorsport.com</a></div>
+    <div class="np-grid-2-1">
+        <!-- Lead: MotoGP market 2027 -->
+        <div class="np-col">
+            <div class="np-tag motogp">Mercado de pilotos · MotoGP 2027</div>
+            <h1 class="hl-xl">Quartararo a Honda y Alonso debuta en MotoGP: el mercado 2027 sacude toda la parrilla</h1>
+            <div class="np-byline">Muskoka Sport Desk · agosto 2026</div>
+            <div class="np-body dropcap">
+                <p>La parrilla de MotoGP para 2027 empieza a tomar forma y los movimientos son sísmicos. El más resonante: Fabio Quartararo, campeón mundial de 2021, abandona Yamaha para sumarse a Honda HRC el año próximo. El francés, que nunca recuperó el nivel de su temporada dorada, apuesta por una marca en reconstrucción que busca volver a pelear por el título. Es una apuesta de riesgo en ambas direcciones.</p>
+                <p>La otra bomba del mercado es David Alonso, el colombiano de 18 años que arrasó en Moto3 y se convierte en uno de los pilotos más jóvenes en dar el salto directo a MotoGP. Firma un contrato multianual con Honda Racing Corporation — una decisión que sorprendió a todo el paddock y marca el inicio de una nueva era para el fabricante japonés, que busca recuperar protagonismo en la era híbrida.</p>
+                <div class="np-pull motogp">"La parrilla empieza a tomar forma para la nueva era. Hay movimientos en todos los equipos." — MotoGP.com oficial</div>
+                <p>El campeonato 2026 mientras tanto es un polvorín. Cuatro pilotos — Martín (208), Ogura (194), Márquez (190) y Bezzecchi (186) — están separados por solo 22 puntos antes de Silverstone. Marc Márquez ganó en Sachsenring y en cuatro carreras pasó de -102 a -18 sobre el líder. La carrera en Gran Bretaña el 7-9 de agosto podría volcar definitivamente el campeonato. También regresará a la acción Takanori Nakagami como wildcard en Motegi, ante el público japonés que lo adora.</p>
             </div>
-            <div class="stats-panel">
-                <h3>🏆 Campeonato MotoGP 2026</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1</span>
-                        <span class="standings-driver">J. Martín</span>
-                        <span class="standings-team">Aprilia</span>
-                        <span class="standings-pts">208</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">2</span>
-                        <span class="standings-driver">A. Ogura</span>
-                        <span class="standings-team">Honda</span>
-                        <span class="standings-pts">194</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">3</span>
-                        <span class="standings-driver">M. Márquez</span>
-                        <span class="standings-team">Ducati</span>
-                        <span class="standings-pts">190</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">4</span>
-                        <span class="standings-driver">M. Bezzecchi</span>
-                        <span class="standings-team">KTM</span>
-                        <span class="standings-pts">186</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">5</span>
-                        <span class="standings-driver">F. Di Giannantonio</span>
-                        <span class="standings-team">Ducati</span>
-                        <span class="standings-pts">184</span>
-                    </div>
-                </div>
+            <div class="np-source">Fuentes: <a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP Oficial</a> · <a href="https://es.motorsport.com/motogp/news/calendario-motogp-2026-temporada-carreras/10744475/" target="_blank">Motorsport.com</a></div>
+        </div>
+
+        <!-- Sidebar: MotoGP standings + Calendar -->
+        <div class="np-col">
+            <div class="np-stats motogp-top">
+                <h4>🏆 Campeonato MotoGP 2026</h4>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">J. Martín</span><span class="np-team">Aprilia</span><span class="np-pts">208</span></div>
+                <div class="np-row"><span class="np-pos">2</span><span class="np-name">A. Ogura</span><span class="np-team">Honda</span><span class="np-pts">194</span></div>
+                <div class="np-row"><span class="np-pos">3</span><span class="np-name">M. Márquez</span><span class="np-team">Ducati</span><span class="np-pts">190</span></div>
+                <div class="np-row"><span class="np-pos">4</span><span class="np-name">M. Bezzecchi</span><span class="np-team">KTM</span><span class="np-pts">186</span></div>
+                <div class="np-row"><span class="np-pos">5</span><span class="np-name">F. Di Giannantonio</span><span class="np-team">Ducati</span><span class="np-pts">184</span></div>
                 <hr>
-                <div class="calendar-list">
+                <h4>📅 Próximas fechas</h4>
+                <div class="np-cal">
                     <div class="next">▶ Silverstone R12 · 7-9 ago ←</div>
                     <div>Aragón · Japón (Motegi)</div>
                     <div>Australia — Phillip Island</div>
-                    <div>Tailandia — Chang</div>
-                    <div>Malaysia · Valencia — final</div>
+                    <div>Tailandia · Malaysia · Valencia</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="small-grid">
-        <div class="small-article motogp-border">
-            <div class="article-tag tag-motogp">Alemania · Sachsenring · Márquez</div>
-            <h3 class="article-title">Márquez ganó en Alemania y el campeonato se electrizó: cuatro pilotos en 22 puntos</h3>
-            <div class="article-body">
-                <p>Marc Márquez triunfó en el Sachsenring y se metió de lleno en la pelea por el título. El campeonato tiene cuatro pilotos en solo 22 puntos: Martín (208), Ogura (194), Márquez (190) y Bezzecchi (186). Un final de temporada de infarto.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP.com</a></div>
+    <hr class="np-divider">
+
+    <div class="np-grid-3">
+        <div class="np-col">
+            <div class="np-tag motogp">Alemania · Sachsenring · Márquez</div>
+            <h3 class="hl-md">Márquez ganó en Alemania y el campeonato se electrizó: cuatro pilotos en 22 puntos</h3>
+            <div class="np-byline">jul · Sachsenring, Alemania</div>
+            <div class="np-body-sm">Marc Márquez triunfó en el Sachsenring y se metió de lleno en la pelea por el título. El campeonato tiene cuatro pilotos en solo 22 puntos: Martín (208), Ogura (194), Márquez (190) y Bezzecchi (186). El español pasó de estar a más de 100 puntos del líder hace cuatro carreras a estar a 18. Un final de temporada de infarto se avecina.</div>
+            <div class="np-source"><a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP.com</a></div>
         </div>
-        <div class="small-article motogp-border">
-            <div class="article-tag tag-motogp">Nakagami · Motegi · Wildcard</div>
-            <h3 class="article-title">Nakagami vuelve a casa: wildcard en Japón ante su público</h3>
-            <div class="article-body">
-                <p>Takanori Nakagami regresa a la competición como wildcard en el Gran Premio de Japón en Motegi. El veterano japonés, muy querido por la afición local, busca una actuación para el recuerdo en su propio Gran Premio de casa.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP Oficial</a></div>
+        <div class="np-col">
+            <div class="np-tag motogp">Nakagami · Motegi · Wildcard</div>
+            <h3 class="hl-md">Nakagami vuelve a casa: wildcard en Japón ante el público que lo adora</h3>
+            <div class="np-byline">ago · Motegi, Japón</div>
+            <div class="np-body-sm">Takanori Nakagami regresa a la competición como wildcard en el Gran Premio de Japón en Motegi. El veterano japonés, muy querido por la afición local, busca una actuación para el recuerdo en su propio Gran Premio de casa. Su presencia en la parrilla añade un componente emotivo especial a la fecha nipona.</div>
+            <div class="np-source"><a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP Oficial</a></div>
         </div>
-        <div class="small-article motogp-border">
-            <div class="article-tag tag-motogp">David Alonso · Colombia · Honda</div>
-            <h3 class="article-title">David Alonso, el salto histórico: de Moto3 a MotoGP sin escalas a los 18 años</h3>
-            <div class="article-body">
-                <p>El colombiano David Alonso firma con Honda para debutar directamente en MotoGP en 2027. Con apenas 18 años, se convierte en uno de los casos más sorprendentes de la historia del campeonato. Su talento arrollador ya es indiscutible en todo el paddock.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP.com</a></div>
+        <div class="np-col">
+            <div class="np-tag motogp">David Alonso · Colombia · Honda</div>
+            <h3 class="hl-md">David Alonso, el salto histórico: de Moto3 a MotoGP sin escalas a los 18 años</h3>
+            <div class="np-byline">2026 · Honda Racing Corporation</div>
+            <div class="np-body-sm">El colombiano David Alonso firma con Honda para debutar directamente en MotoGP en 2027. Con apenas 18 años, se convierte en uno de los casos más sorprendentes de la historia del campeonato. Su talento arrollador ya es indiscutible en todo el paddock — ganó en Moto3 con una autoridad que recordó a pilotos históricos. Honda apuesta por él como pieza clave de su proyecto de reconstrucción.</div>
+            <div class="np-source"><a href="https://www.motogp.com/es/news/MotoGP" target="_blank">MotoGP.com</a></div>
         </div>
     </div>
 
-
-    <!-- ═══ MOTOCROSS ARGENTINA ═══ -->
-    <div id="sec-mx-arg" class="section-header" style="scroll-margin-top:170px;">
-        <span class="section-badge badge-mx-arg">Motocross Argentina 🇦🇷</span>
-        <div class="section-line line-mx-arg"></div>
+    <!-- ══════════════ MX ARGENTINA ══════════════ -->
+    <div id="sec-mx-arg" class="np-section">
+        <div class="np-section-rule-top"></div>
+        <div class="np-section-inner">
+            <div class="np-section-title mx-arg">Motocross Argentina 🇦🇷</div>
+            <div class="np-section-sub">Campeonato Argentino de Motocross 2026 · 5ª fecha disputada · Catamarca este fin de semana</div>
+        </div>
     </div>
 
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-mx-arg">Campeonato Argentino de Motocross 2026 · 4ª Fecha · San Juan</div>
-                <h2 class="article-title">San Juan recibió la 4ª fecha del Nacional con 14 categorías — Poli y Juárez lideran el torneo</h2>
-                <div class="article-body">
-                    <p>El circuito <strong>Santa Lucía MX Park de San Juan</strong> fue sede de la cuarta fecha del Campeonato Argentino de Motocross 2026 durante el fin de semana del 11 y 12 de julio. Con más de 140 pilotos participando en 14 categorías, la jornada fue un festival de motocross a lo largo y ancho del país.</p>
-                    <p><strong>Joaquín Poli</strong> se mantiene al frente del MX1 y sigue siendo el hombre a vencer en la categoría reina. En la categoría 85cc A, <strong>Benjamín Juárez</strong> (La Pampa) dominó de punta a punta ambas mangas con veinte segundos de ventaja en la primera y ocho en la segunda, consolidando su liderazgo de categoría con una actuación que sorprendió al paddock sanjuanino.</p>
-                    <div class="article-quote">"El Santa Lucía MX Park quedó entre los circuitos destacados del calendario 2026. Una pista muy técnica y desafiante." — SW Diario</div>
-                    <p>La temporada avanza rápido: la próxima cita para el campeonato nacional es la <strong>6ª fecha en Catamarca</strong>, prevista para el <strong>8 y 9 de agosto</strong> — este fin de semana. Será otro evento de gran convocatoria en el norte del país.</p>
-                </div>
-                <div class="article-source">Fuentes: <a href="https://www.swdiario.com.ar/2026/07/motocross-argentino-en-san-juan-quienes.html" target="_blank">SW Diario</a> · <a href="https://www.laarena.com.ar/deportes/triunfo-de-juarez-en-san-juan-20267140170" target="_blank">La Arena</a> · <a href="https://mxargentina.com/" target="_blank">MXArgentina.com</a></div>
+    <div class="np-grid-2-1">
+        <!-- Lead: MX Argentina -->
+        <div class="np-col">
+            <div class="np-tag mx-arg">Campeonato Argentino de Motocross 2026 · 4ª Fecha · San Juan</div>
+            <h1 class="hl-xl">San Juan recibió la 4ª fecha del Nacional con 14 categorías — Poli sigue al frente del MX1 y Juárez aplasta en 85cc</h1>
+            <div class="np-byline">Muskoka Sport Desk · San Juan, 11-12 de julio de 2026</div>
+            <div class="np-body dropcap">
+                <p>El circuito Santa Lucía MX Park de San Juan fue sede de la cuarta fecha del Campeonato Argentino de Motocross 2026 durante el fin de semana del 11 y 12 de julio. Con más de 140 pilotos participando en 14 categorías, la jornada fue un festival de motocross que reunió a competidores de todo el país en una pista muy técnica y exigente.</p>
+                <p>Joaquín Poli se mantiene al frente del MX1 y sigue siendo el hombre a vencer en la categoría reina. En la categoría 85cc A, Benjamín Juárez (La Pampa) dominó de punta a punta ambas mangas con veinte segundos de ventaja en la primera y ocho en la segunda, consolidando su liderazgo de categoría con una actuación que sorprendió al paddock sanjuanino. Su experiencia previa en circuitos de Estados Unidos le dio una lectura de pista que sus rivales no tuvieron.</p>
+                <div class="np-pull">"El Santa Lucía MX Park quedó entre los circuitos destacados del calendario 2026. Una pista muy técnica y desafiante." — SW Diario</div>
+                <p>La temporada avanza rápido: la próxima cita es la 6ª fecha en Catamarca, prevista para el 8 y 9 de agosto — este fin de semana. Será otro evento de gran convocatoria en el norte del país. El campeonato también incluyó una etapa internacional en Bariloche donde más de 43.000 personas colmaron el PITBA para la fecha del MXGP Argentina YPF 2026, consolidando a la Argentina como sede de primer nivel del motocross mundial.</p>
             </div>
-            <div class="stats-panel">
-                <h3>🇦🇷 Campeonato Nacional — 2026</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1</span>
-                        <span class="standings-driver">J. Poli</span>
-                        <span class="standings-team">MX1</span>
-                        <span class="standings-pts" style="color:#6fcf97;">Líder</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">—</span>
-                        <span class="standings-driver">A. Carrasco</span>
-                        <span class="standings-team">MX1</span>
-                        <span class="standings-pts">—</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">—</span>
-                        <span class="standings-driver">P. Galletta</span>
-                        <span class="standings-team">MX1</span>
-                        <span class="standings-pts">—</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1</span>
-                        <span class="standings-driver">B. Juárez</span>
-                        <span class="standings-team">85cc A</span>
-                        <span class="standings-pts" style="color:#6fcf97;">Líder</span>
-                    </div>
-                </div>
+            <div class="np-source">Fuentes: <a href="https://www.swdiario.com.ar/2026/07/motocross-argentino-en-san-juan-quienes.html" target="_blank">SW Diario</a> · <a href="https://www.laarena.com.ar/deportes/triunfo-de-juarez-en-san-juan-20267140170" target="_blank">La Arena</a> · <a href="https://mxargentina.com/" target="_blank">MXArgentina.com</a></div>
+        </div>
+
+        <!-- Sidebar: MX Argentina standings -->
+        <div class="np-col">
+            <div class="np-stats mx-arg-top">
+                <h4>🇦🇷 Campeonato Nacional — 2026</h4>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">J. Poli</span><span class="np-team">MX1</span><span class="np-pts" style="color:#1b6b2e;">Líder</span></div>
+                <div class="np-row"><span class="np-pos">—</span><span class="np-name">A. Carrasco</span><span class="np-team">MX1</span><span class="np-pts">—</span></div>
+                <div class="np-row"><span class="np-pos">—</span><span class="np-name">P. Galletta</span><span class="np-team">MX1</span><span class="np-pts">—</span></div>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">B. Juárez</span><span class="np-team">85cc A</span><span class="np-pts" style="color:#1b6b2e;">Líder</span></div>
                 <hr>
-                <div class="calendar-list">
-                    <div>1ª Fecha — Neuquén ✓</div>
-                    <div>2ª Fecha — Dolores ✓</div>
-                    <div>3ª Fecha — Álvear (Mendoza) ✓</div>
-                    <div>4ª Fecha — San Juan (11-12 jul) ✓</div>
-                    <div>5ª Fecha — TBC ✓</div>
+                <h4>📅 Calendario 2026</h4>
+                <div class="np-cal">
+                    <div class="done">1ª Fecha — Neuquén ✓</div>
+                    <div class="done">2ª Fecha — Dolores ✓</div>
+                    <div class="done">3ª Fecha — Álvear (Mendoza) ✓</div>
+                    <div class="done">4ª Fecha — San Juan ✓</div>
+                    <div class="done">5ª Fecha — TBC ✓</div>
                     <div class="next">▶ 6ª Fecha — Catamarca · 8-9 ago ←</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="small-grid">
-        <div class="small-article mx-arg-border">
-            <div class="article-tag tag-mx-arg">MXGP Argentina YPF · Bariloche · Marzo</div>
-            <h3 class="article-title">El Mundial llegó a Bariloche y 43.000 personas colmaron el PITBA</h3>
-            <div class="article-body">
-                <p>El MXGP Argentina YPF 2026 abrió la temporada mundial en Bariloche con más de 43.325 espectadores en las tribunas del PITBA. Argentina consolidó su lugar como sede internacional del motocross de primer nivel.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://mxgpargentina.com/" target="_blank">MXGP Argentina</a></div>
+    <hr class="np-divider">
+
+    <div class="np-grid-3">
+        <div class="np-col">
+            <div class="np-tag mx-arg">MXGP Argentina YPF · Bariloche · Marzo 2026</div>
+            <h3 class="hl-md">El Mundial llegó a Bariloche y 43.000 personas colmaron el PITBA</h3>
+            <div class="np-byline">mar · Bariloche, Río Negro</div>
+            <div class="np-body-sm">El MXGP Argentina YPF 2026 abrió la temporada mundial en Bariloche con más de 43.325 espectadores en las tribunas del PITBA. Argentina consolidó su lugar como sede internacional del motocross de primer nivel y demostró que la afición local es una de las más apasionadas del mundo.</div>
+            <div class="np-source"><a href="https://mxgpargentina.com/" target="_blank">MXGP Argentina</a></div>
         </div>
-        <div class="small-article mx-arg-border">
-            <div class="article-tag tag-mx-arg">Latinoamericano · Bariloche · MX1 y MX2</div>
-            <h3 class="article-title">El Campeonato Latinoamericano MX1 y MX2 se coronó en Bariloche</h3>
-            <div class="article-body">
-                <p>En el marco del evento internacional de Bariloche también se disputó el Campeonato Latinoamericano en categorías MX1 y MX2. Pilotos de toda la región mostraron el crecimiento del motocross continental en un circuito de nivel mundial.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://mxzone.com.ar/mxgp-2026-resultados-motocross-latino-mx-1-y-mx-2/" target="_blank">MX Zone Argentina</a></div>
+        <div class="np-col">
+            <div class="np-tag mx-arg">Latinoamericano · Bariloche · MX1 y MX2</div>
+            <h3 class="hl-md">El Campeonato Latinoamericano MX1 y MX2 se coronó en Bariloche junto al MXGP</h3>
+            <div class="np-byline">mar · Bariloche, Río Negro</div>
+            <div class="np-body-sm">En el marco del evento internacional de Bariloche también se disputó el Campeonato Latinoamericano en categorías MX1 y MX2. Pilotos de toda la región mostraron el crecimiento del motocross continental en un circuito de nivel mundial. Argentina demostró ser el epicentro del motocross latinoamericano.</div>
+            <div class="np-source"><a href="https://mxzone.com.ar/mxgp-2026-resultados-motocross-latino-mx-1-y-mx-2/" target="_blank">MX Zone Argentina</a></div>
         </div>
-        <div class="small-article mx-arg-border">
-            <div class="article-tag tag-mx-arg">Benjamín Juárez · La Pampa · 85cc</div>
-            <h3 class="article-title">Juárez aplastó en San Juan con 20 segundos de ventaja — domina 85cc con manejo de experto</h3>
-            <div class="article-body">
-                <p>Benjamín Juárez (Toay, La Pampa) fue la gran revelación de la 4ª fecha sanjuanina. En una pista muy técnica y desgastada, el pampeano ganó ambas mangas con ventajas demoledoras: +20 segundos en la primera manga y +8 en la segunda. Su experiencia previa en circuitos de EE.UU. le dio una lectura de pista que sus rivales no tuvieron. Lidera la categoría 85cc A con autoridad.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://www.laarena.com.ar/deportes/triunfo-de-juarez-en-san-juan-20267140170" target="_blank">La Arena</a></div>
+        <div class="np-col">
+            <div class="np-tag mx-arg">Benjamín Juárez · La Pampa · 85cc</div>
+            <h3 class="hl-md">Juárez aplastó en San Juan con 20 segundos de ventaja — domina 85cc con manejo de experto</h3>
+            <div class="np-byline">12 jul · Santa Lucía MX Park, San Juan</div>
+            <div class="np-body-sm">Benjamín Juárez (Toay, La Pampa) fue la gran revelación de la 4ª fecha sanjuanina. En una pista muy técnica y desgastada, el pampeano ganó ambas mangas con ventajas demoledoras: +20 segundos en la primera manga y +8 en la segunda. Su experiencia previa en circuitos de EE.UU. le dio una lectura de pista que sus rivales no tuvieron. Lidera la categoría 85cc A con autoridad.</div>
+            <div class="np-source"><a href="https://www.laarena.com.ar/deportes/triunfo-de-juarez-en-san-juan-20267140170" target="_blank">La Arena</a></div>
         </div>
     </div>
 
-
-    <!-- ═══ MOTOCROSS MUNDIAL ═══ -->
-    <div class="section-header">
-        <span class="section-badge badge-mx-world">Motocross Mundial — MXGP</span>
-        <div class="section-line line-mx-world"></div>
+    <!-- ══════════════ MX MUNDIAL ══════════════ -->
+    <div id="sec-mx-world" class="np-section">
+        <div class="np-section-rule-top"></div>
+        <div class="np-section-inner">
+            <div class="np-section-title mx-world">Motocross Mundial — MXGP</div>
+            <div class="np-section-sub">Temporada 2026 · 14 de 19 fechas disputadas · Herlings consolida el liderazgo</div>
+        </div>
     </div>
 
-    <div class="ticker">
-        <span class="ticker-label">MXGP R14 Flandes</span>
+    <div class="np-ticker mx-world">
+        <span class="np-ticker-label">MXGP R14 Flandes</span>
         <span>🔥 HERLINGS 1-1 en Lommel (1-2 ago) · Kay de Wolf 2° · Gajser 3° · Coenen sigue sin puntuar por lesión · Campeonato: Herlings 675 · Febvre 571 · Coenen 566 — Herlings lidera por 104 pts</span>
     </div>
 
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-mx-world">MXGP Flandes · Lommel · R14 · 1-2 agosto 2026</div>
-                <h2 class="article-title">Herlings arrasa en Lommel y consolida el liderazgo — Coenen sigue sin puntuar por lesión de cadera</h2>
-                <div class="article-body">
-                    <p><strong>Jeffrey Herlings</strong> (Honda) firmó otro fin de semana perfecto en el MXGP de Flandes, disputado el 1 y 2 de agosto en el mítico circuito de Lommel (Bélgica). El neerlandés ganó ambas motos con autoridad en la arena profunda que domina como nadie: moto 1 con 45 segundos de ventaja sobre <strong>Kay de Wolf</strong> (Husqvarna), moto 2 con 39 segundos. El resultado redondea una racha formidable: cinco victorias consecutivas en los últimos tres Grandes Premios disputados.</p>
-                    <p>La gran novedad del fin de semana es que <strong>Lucas Coenen</strong> (KTM) volvió a ausentarse de las clasificaciones por la lesión de compresión nerviosa en la cadera izquierda que arrastra desde Loket (R13). El belga, que llegó a liderar el campeonato con +11 sobre Herlings apenas siete fechas atrás, ya ha perdido suficientes puntos como para caer al tercer puesto del campeonato, superado también por <strong>Romain Febvre</strong> (Kawasaki). El podio de Flandes lo completaron Kay de Wolf (2°) y <strong>Tim Gajser</strong> (Yamaha, 3°).</p>
-                    <div class="article-quote">"Lommel es mi casa. Aquí el ritmo que tengo no lo tiene nadie. Vamos a pelear este campeonato hasta el final." — Jeffrey Herlings</div>
-                    <p>Con 14 de 19 fechas disputadas, el calendario MXGP llega a su fase final. Herlings acumula <strong>675 puntos</strong> y aventaja en 104 a Febvre (571), y en 109 a Coenen (566). Si el belga no puede recuperarse al 100% para las próximas citas, el título podría resolverse antes de lo previsto a favor del veterano neerlandés.</p>
-                </div>
-                <div class="article-source">Fuentes: <a href="https://mxvice.com/2026/08/03/herlings-and-mc-lellan-celebrate-perfect-weekends-at-the-mxgp-of-flanders/" target="_blank">MX Vice</a> · <a href="https://mxgpresults.com/mxgp/2026/flanders" target="_blank">MXGP Results</a> · <a href="https://racerxonline.com/mxgp/2026/points/mx1" target="_blank">Racer X — Standings</a></div>
+    <div class="np-grid-2-1">
+        <div class="np-col">
+            <div class="np-tag mx-world">MXGP Flandes · Lommel · R14 · 1-2 agosto 2026</div>
+            <h1 class="hl-xl">Herlings arrasa en Lommel y consolida el liderazgo — Coenen sigue sin puntuar por lesión de cadera</h1>
+            <div class="np-byline">Muskoka Sport Desk · Lommel, Bélgica, 1-2 agosto de 2026</div>
+            <div class="np-body dropcap">
+                <p>Jeffrey Herlings (Honda) firmó otro fin de semana perfecto en el MXGP de Flandes, disputado el 1 y 2 de agosto en el mítico circuito de Lommel, Bélgica. El neerlandés ganó ambas motos con autoridad en la arena profunda que domina como nadie: moto 1 con 45 segundos de ventaja sobre Kay de Wolf (Husqvarna), moto 2 con 39 segundos. El resultado redondea una racha formidable: cinco victorias consecutivas en los últimos tres Grandes Premios disputados. En Lommel, Herlings es prácticamente imbatible — la arena es su elemento natural.</p>
+                <p>La gran novedad del fin de semana es que Lucas Coenen (KTM) volvió a ausentarse de las clasificaciones por la lesión de compresión nerviosa en la cadera izquierda que arrastra desde Loket (R13). El belga, que llegó a liderar el campeonato con +11 sobre Herlings apenas siete fechas atrás, ya ha perdido suficientes puntos como para caer al tercer puesto del campeonato, superado también por Romain Febvre (Kawasaki). El podio de Flandes lo completaron Kay de Wolf (2°) y Tim Gajser (Yamaha, 3°).</p>
+                <div class="np-pull">"Lommel es mi casa. Aquí el ritmo que tengo no lo tiene nadie. Vamos a pelear este campeonato hasta el final." — Jeffrey Herlings</div>
+                <p>Con 14 de 19 fechas disputadas, el calendario MXGP llega a su fase final. Herlings acumula 675 puntos y aventaja en 104 a Febvre (571), y en 109 a Coenen (566). Si el belga no puede recuperarse al 100% para las próximas citas — Suecia, Turquía y las finales —, el título podría resolverse antes de lo previsto a favor del veterano neerlandés de Honda.</p>
             </div>
-            <div class="stats-panel">
-                <h3>🌍 MXGP — Campeonato 2026 (R14)</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1</span>
-                        <span class="standings-driver">J. Herlings 🏆</span>
-                        <span class="standings-team">Honda</span>
-                        <span class="standings-pts">675</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">2</span>
-                        <span class="standings-driver">R. Febvre</span>
-                        <span class="standings-team">Kawasaki</span>
-                        <span class="standings-pts">571</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">3</span>
-                        <span class="standings-driver">L. Coenen ⚕️</span>
-                        <span class="standings-team">KTM</span>
-                        <span class="standings-pts">566</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">4</span>
-                        <span class="standings-driver">T. Gajser</span>
-                        <span class="standings-team">Yamaha</span>
-                        <span class="standings-pts">534</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">5</span>
-                        <span class="standings-driver">A. Adamo</span>
-                        <span class="standings-team">KTM</span>
-                        <span class="standings-pts">450</span>
-                    </div>
-                </div>
+            <div class="np-source">Fuentes: <a href="https://mxvice.com/2026/08/03/herlings-and-mc-lellan-celebrate-perfect-weekends-at-the-mxgp-of-flanders/" target="_blank">MX Vice</a> · <a href="https://mxgpresults.com/mxgp/2026/flanders" target="_blank">MXGP Results</a> · <a href="https://racerxonline.com/mxgp/2026/points/mx1" target="_blank">Racer X</a></div>
+        </div>
+
+        <div class="np-col">
+            <div class="np-stats mx-top">
+                <h4>🌍 MXGP — Campeonato 2026 (R14)</h4>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">J. Herlings 🏆</span><span class="np-team">Honda</span><span class="np-pts">675</span></div>
+                <div class="np-row"><span class="np-pos">2</span><span class="np-name">R. Febvre</span><span class="np-team">Kawasaki</span><span class="np-pts">571</span></div>
+                <div class="np-row"><span class="np-pos">3</span><span class="np-name">L. Coenen ⚕️</span><span class="np-team">KTM</span><span class="np-pts">566</span></div>
+                <div class="np-row"><span class="np-pos">4</span><span class="np-name">T. Gajser</span><span class="np-team">Yamaha</span><span class="np-pts">534</span></div>
+                <div class="np-row"><span class="np-pos">5</span><span class="np-name">A. Adamo</span><span class="np-team">KTM</span><span class="np-pts">450</span></div>
                 <hr>
-                <h3>🏁 Flandes R14 — Podio</h3>
-                <div class="standings-table">
-                    <div class="standings-row">
-                        <span class="standings-pos gold">1</span>
-                        <span class="standings-driver">J. Herlings</span>
-                        <span class="standings-team">Honda</span>
-                        <span class="standings-pts" style="color:#FFD700;">1-1</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">2</span>
-                        <span class="standings-driver">K. de Wolf</span>
-                        <span class="standings-team">Husqvarna</span>
-                        <span class="standings-pts">2-2</span>
-                    </div>
-                    <div class="standings-row">
-                        <span class="standings-pos">3</span>
-                        <span class="standings-driver">T. Gajser</span>
-                        <span class="standings-team">Yamaha</span>
-                        <span class="standings-pts">3-3</span>
-                    </div>
-                    <div class="standings-row" style="opacity:0.6;">
-                        <span class="standings-pos" style="color:#e05800;">⚕️</span>
-                        <span class="standings-driver">L. Coenen</span>
-                        <span class="standings-team">KTM</span>
-                        <span class="standings-pts" style="color:#e05800;">Lesión</span>
-                    </div>
-                </div>
+                <h4>🏁 Flandes R14 — Podio</h4>
+                <div class="np-row"><span class="np-pos gold">1</span><span class="np-name">J. Herlings</span><span class="np-team">Honda</span><span class="np-pts" style="color:#9a7000;">1-1</span></div>
+                <div class="np-row"><span class="np-pos">2</span><span class="np-name">K. de Wolf</span><span class="np-team">Husqvarna</span><span class="np-pts">2-2</span></div>
+                <div class="np-row"><span class="np-pos">3</span><span class="np-name">T. Gajser</span><span class="np-team">Yamaha</span><span class="np-pts">3-3</span></div>
+                <div class="np-row" style="opacity:0.6;"><span class="np-pos" style="color:#CC0000;">⚕️</span><span class="np-name">L. Coenen</span><span class="np-team">KTM</span><span class="np-pts" style="color:#CC0000;">Lesión</span></div>
                 <hr>
-                <div class="calendar-list">
-                    <div>Gran Bretaña R11 Foxhill ✓</div>
-                    <div>República Checa R12 ✓</div>
-                    <div>Lommel R13 ✓ · Flandes R14 ✓</div>
+                <h4>📅 Calendario MXGP</h4>
+                <div class="np-cal">
+                    <div class="done">Lommel R13 ✓ · Flandes R14 ✓</div>
                     <div class="next">▶ Próxima fecha — TBC</div>
-                    <div>Suecia · Turquía · Final</div>
+                    <div>Suecia · Turquía · Final R19</div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!-- ═══ TRAVESÍAS EN MOTO ═══ -->
-    <div id="sec-travel" class="section-header" style="scroll-margin-top:170px;">
-        <span class="section-badge badge-travel">Travesías en Moto 🌍</span>
-        <div class="section-line line-travel"></div>
+    <!-- ══════════════ TRAVESÍAS ══════════════ -->
+    <div id="sec-travel" class="np-section">
+        <div class="np-section-rule-top"></div>
+        <div class="np-section-inner">
+            <div class="np-section-title travel">Travesías en Moto 🌍</div>
+            <div class="np-section-sub">Expediciones · Rutas épicas · Aventura sobre dos ruedas · 2026</div>
+        </div>
     </div>
 
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-travel">Expedition Masters 2026 · Ducati</div>
-                <h2 class="article-title">Expedition Masters 2026: cuatro continentes, miles de kilómetros y la moto como protagonista</h2>
-                <div class="article-body">
-                    <p>El programa <strong>Expedition Masters 2026</strong> de Ducati ofrece este año cuatro travesías épicas que combinan aventura extrema, paisajes únicos y guías profesionales.</p>
-                    <p>La joya es el <strong>Gran Tour de Italia</strong> (1.800 km): Circuito de Misano, Venecia, Dolomitas, Paso Stelvio y Museo Ducati. Luego <strong>Islandia</strong> (1.500 km, julio-agosto): glaciares, lavas activas y desiertos negros en DesertX. En septiembre el <strong>Sueño Americano</strong> (4.800 km): San Francisco, Yellowstone, Pacific Coast Highway. Cierra la <strong>Costa Amalfitana</strong> (1.800 km) en octubre.</p>
-                    <div class="article-quote">"Rodar por Islandia entre volcanes activos y glaciares a bordo de una DesertX es una experiencia sin comparación." — Motosan.es</div>
-                </div>
-                <div class="article-source">Fuente: <a href="https://www.motosan.es/motos/expedition-masters-2026-te-atreves-con-el-viaje-en-moto-mas-extremo-del-mundo/" target="_blank">Motosan.es</a></div>
+    <div class="np-grid-2-1">
+        <div class="np-col">
+            <div class="np-tag travel">Expedition Masters 2026 · Ducati</div>
+            <h1 class="hl-xl">Expedition Masters 2026: cuatro continentes, miles de kilómetros y la moto como protagonista absoluta</h1>
+            <div class="np-byline">Muskoka Sport Desk · Temporada 2026</div>
+            <div class="np-body dropcap">
+                <p>El programa Expedition Masters 2026 de Ducati ofrece este año cuatro travesías épicas que combinan aventura extrema, paisajes únicos y guías profesionales de primer nivel. La joya del catálogo es el Gran Tour de Italia (1.800 km): Circuito de Misano, Venecia, Dolomitas, Paso Stelvio y Museo Ducati — una combinación de velocidad y cultura que ningún otro tour ofrece.</p>
+                <p>Le sigue Islandia (1.500 km, julio-agosto): glaciares, lavas activas y desiertos negros a bordo de la DesertX. En septiembre llega el Sueño Americano (4.800 km): San Francisco, Yellowstone, Pacific Coast Highway, cruzando todo el oeste norteamericano. El ciclo cierra con la Costa Amalfitana (1.800 km) en octubre — curvas infinitas con el Mediterráneo de fondo.</p>
+                <div class="np-pull travel">"Rodar por Islandia entre volcanes activos y glaciares a bordo de una DesertX es una experiencia sin comparación en este mundo." — Motosan.es</div>
+                <p>Para los argentinos, la ruta Patagonia &amp; Ushuaia sigue siendo una de las más demandadas por motociclistas de todo el mundo. Rutas 3 y 40 del sur patagónico, los lagos cordilleranos y la llegada al fin del mundo la convierten en un viaje iniciático. También destacan el Himalaya Ladakh (India, pasos a 5.000 metros) y el Dakar Challenge, que recorre el camino histórico de la mítica carrera de Tarifa a Dakar cruzando el Sahara — más de 4.000 km de arena, cultura y aventura pura.</p>
             </div>
-            <div class="stats-panel">
-                <h3>🗺️ Rutas destacadas 2026</h3>
-                <div class="calendar-list" style="line-height:2.2;">
+            <div class="np-source">Fuente: <a href="https://www.motosan.es/motos/expedition-masters-2026-te-atreves-con-el-viaje-en-moto-mas-extremo-del-mundo/" target="_blank">Motosan.es</a> · <a href="https://motoviajes.com/" target="_blank">Motoviajes.com</a></div>
+        </div>
+        <div class="np-col">
+            <div class="np-stats travel-top">
+                <h4>🗺️ Rutas destacadas 2026</h4>
+                <div class="np-cal" style="line-height:2.1;">
                     <div>🇮🇹 Italia — Gran Tour · 1.800 km</div>
                     <div>🇮🇸 Islandia — Volcanes · 1.500 km</div>
                     <div>🇺🇸 USA — Costa a Costa · 4.800 km</div>
                     <div>🇮🇹 Amalfi · 1.800 km</div>
-                    <hr style="border-color:rgba(255,255,255,0.1); margin:8px 0;">
+                    <hr style="border-color:#c8b99a;margin:8px 0;">
                     <div>🇳🇴 Cabo Norte · Escandinavia</div>
                     <div>🏔️ Himalaya Ladakh · India</div>
                     <div>🇦🇷 Patagonia &amp; Ushuaia</div>
@@ -1053,120 +733,102 @@ window.addEventListener('scroll', function() {
         </div>
     </div>
 
-    <div class="small-grid">
-        <div class="small-article travel-border">
-            <div class="article-tag tag-travel">Patagonia · Ushuaia · Argentina</div>
-            <h3 class="article-title">El fin del mundo en moto: la ruta Patagonia-Ushuaia, imperdible para los argentinos</h3>
-            <div class="article-body">
-                <p>La travesía Patagonia &amp; Ushuaia sigue siendo una de las más demandadas por motociclistas de todo el mundo. Rutas 3 y 40 del sur argentino, los lagos cordilleranos y la llegada al fin del mundo la convierten en un viaje iniciático para cualquier apasionado de las dos ruedas.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://motoviajes.com/" target="_blank">Motoviajes.com</a></div>
-        </div>
-        <div class="small-article travel-border">
-            <div class="article-tag tag-travel">Himalaya · Ladakh · India</div>
-            <h3 class="article-title">Himalaya Ladakh: el techo del mundo sobre dos ruedas</h3>
-            <div class="article-body">
-                <p>Pasos de más de 5.000 metros, monasterios budistas y paisajes imposibles. La ruta Himalaya Ladakh 2026 combina dificultad técnica extrema con una espiritualidad única. Los paquetes incluyen guías locales y asistencia médica de altitud. Una experiencia transformadora.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://motoviajes.com/" target="_blank">Motoviajes.com</a></div>
-        </div>
-        <div class="small-article travel-border">
-            <div class="article-tag tag-travel">Dakar · África · Sahara</div>
-            <h3 class="article-title">Dakar Challenge: de Tarifa a Dakar cruzando el Sahara en moto</h3>
-            <div class="article-body">
-                <p>La travesía que recorre el camino histórico de la mítica carrera Paris-Dakar: de sur de España a Senegal cruzando Marruecos y el desierto del Sahara. Más de 4.000 km de arena, cultura y aventura pura — una de las rutas más épicas para los amantes de las motos de aventura.</p>
-            </div>
-            <div class="article-source" style="margin-top:12px;">Fuente: <a href="https://motoviajes.com/" target="_blank">Motoviajes.com</a></div>
+    <!-- ══════════════ SALUD & CIENCIA ══════════════ -->
+    <div id="sec-salud" class="np-section">
+        <div class="np-section-rule-top"></div>
+        <div class="np-section-inner">
+            <div class="np-section-title salud">Salud &amp; Ciencia 🔬</div>
+            <div class="np-section-sub">Avances científicos de julio 2026 · Oncología · Neurología · Inmunología</div>
         </div>
     </div>
 
-
-    <!-- ═══ SALUD ═══ -->
-    <div id="sec-salud" class="section-header" style="scroll-margin-top:170px;">
-        <span class="section-badge badge-salud">Salud & Ciencia 🔬</span>
-        <div class="section-line line-salud"></div>
+    <div class="np-ticker salud">
+        <span class="np-ticker-label">Avances</span>
+        <span>Julio 2026: NSL-YHJ-2-27 bloquea 90%+ del cáncer de páncreas (Florida A&amp;M · 30 jul) · Nanopartículas de glicanos que "vacunan" contra el cáncer (CIC bioGUNE/UPV · 23 jul) · CAR-T reduce placas de Alzheimer en animales (Weizmann/WashU) · "Interruptor de muerte" del Alzheimer bloqueado (Heidelberg)</span>
     </div>
 
-    <div class="ticker" style="border-left-color:#0d7b69;">
-        <span class="ticker-label" style="background:#0d7b69;">Avances</span>
-        <span>Julio 2026: Fármaco contra páncreas bloquea tumor en 90%+ (Florida A&amp;M) · Nanopartículas que vacunan contra el cáncer (CIC bioGUNE/UPV) · CAR-T contra Alzheimer reduce placas en animales (Weizmann/WashU) · Alzheimer: "interruptor de muerte" bloqueado en Heidelberg</span>
-    </div>
-
-    <!-- Salud nota 1: Alzheimer -->
-    <div class="featured-article">
-        <div class="featured-inner">
-            <div class="article-content">
-                <div class="article-tag tag-salud">Neurología · Alzheimer · Universidad de Heidelberg</div>
-                <h2 class="article-title" style="font-size:1.5rem;">Identifican el "interruptor de muerte" del Alzheimer — y un fármaco que lo bloquea en ratones</h2>
-                <div class="article-body">
-                    <p>Investigadores de la Universidad de Heidelberg, dirigidos por el Prof. Dr. <strong>Hilmar Bading</strong>, identificaron un mecanismo molecular hasta ahora desconocido que actúa como un verdadero "interruptor de muerte" en las células nerviosas de pacientes con Alzheimer. El hallazgo, publicado en una de las revistas de neurociencias más reconocidas, describe cómo la interacción tóxica entre dos proteínas específicas —los receptores NMDA extrasináticos y el canal iónico TRPM4— forma lo que los científicos denominan un <em>"complejo de muerte"</em> capaz de dañar y matar neuronas progresivamente.</p>
-                    <p>La naturaleza del descubrimiento es significativa porque apunta a un mecanismo posterior a la formación de las placas de beta-amiloide —el foco tradicional de la mayoría de los tratamientos—, lo que abre una vía completamente nueva. <strong>"En lugar de enfocarse en la formación o eliminación del amiloide, bloqueamos un mecanismo celular posterior que causa la muerte neuronal"</strong>, explicó el Prof. Bading. El equipo empleó un compuesto experimental denominado <strong>FP802</strong>, un inhibidor de interfaz TwinF diseñado para interrumpir la interacción entre las dos proteínas.</p>
-                    <div class="article-quote salud-quote">"Fue una enorme realización ser los primeros en demostrar que, al bloquear este complejo de muerte, podemos preservar la memoria y el aprendizaje en modelos con Alzheimer. Abre una vía terapéutica que el campo no había explorado." — Prof. Dr. Hilmar Bading, Universidad de Heidelberg</div>
-                    <p>En ratones con Alzheimer tratados con FP802, la progresión de la enfermedad se ralentizó significativamente: se preservaron las capacidades de aprendizaje y memoria, y disminuyó la acumulación de beta-amiloide. Los científicos advierten que se necesitan estudios toxicológicos y ensayos clínicos antes de pasar a aplicaciones humanas, pero el mecanismo descubierto ya representa un nuevo blanco terapéutico de alta relevancia para la comunidad médica global.</p>
+    <div class="np-grid-3">
+        <!-- Salud Col 1: Alzheimer Heidelberg -->
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag salud">Neurología · Alzheimer · Universidad de Heidelberg</div>
+                <h2 class="hl-lg">Identifican el "interruptor de muerte" del Alzheimer — y un fármaco experimental que lo bloquea en ratones</h2>
+                <div class="np-byline">2026 · Heidelberg, Alemania</div>
+                <div class="np-body">
+                    <p>Investigadores de la Universidad de Heidelberg, dirigidos por el Prof. Dr. Hilmar Bading, identificaron un mecanismo molecular hasta ahora desconocido que actúa como un verdadero "interruptor de muerte" en las células nerviosas de pacientes con Alzheimer. El hallazgo describe cómo la interacción tóxica entre dos proteínas específicas — los receptores NMDA extrasináticos y el canal iónico TRPM4 — forma un "complejo de muerte" capaz de dañar y matar neuronas progresivamente.</p>
+                    <p>El descubrimiento es significativo porque apunta a un mecanismo posterior a la formación de las placas de beta-amiloide — el foco tradicional de la mayoría de los tratamientos —, lo que abre una vía completamente nueva. El equipo empleó un compuesto experimental denominado FP802, un inhibidor de interfaz TwinF diseñado para interrumpir la interacción entre las dos proteínas. En ratones con Alzheimer tratados, la progresión de la enfermedad se ralentizó significativamente y se preservaron las capacidades de aprendizaje y memoria.</p>
+                    <div class="np-pull salud">"Fue una enorme realización demostrar que, al bloquear este complejo de muerte, podemos preservar la memoria en modelos con Alzheimer." — Prof. Dr. Hilmar Bading, Heidelberg</div>
+                    <p>Los científicos advierten que se necesitan estudios toxicológicos y ensayos clínicos antes de pasar a aplicaciones humanas, pero el mecanismo descubierto ya representa un nuevo blanco terapéutico de alta relevancia.</p>
                 </div>
-                <div class="article-source">Fuente: <a href="https://www.sciencedaily.com/releases/2026/03/260323005526.htm" target="_blank">ScienceDaily</a> · Universidad de Heidelberg, Alemania</div>
+                <div class="np-source">Fuente: <a href="https://www.sciencedaily.com/releases/2026/03/260323005526.htm" target="_blank">ScienceDaily</a> · Universidad de Heidelberg</div>
             </div>
-            <div class="stats-panel">
-                <h3>🔬 ¿Qué es el complejo de muerte?</h3>
-                <div style="font-size:0.82rem; color:#ccc; line-height:1.9;">
-                    <div style="padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><strong style="color:#6fcf97;">Proteína 1</strong><br>Receptores NMDA extrasináticos<br><span style="color:#888; font-size:0.75rem;">Activados por glutamato fuera de sinapsis</span></div>
-                    <div style="padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><strong style="color:#6fcf97;">Proteína 2</strong><br>Canal iónico TRPM4<br><span style="color:#888; font-size:0.75rem;">Altera el comportamiento de los NMDA</span></div>
-                    <div style="padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><strong style="color:#eb5757;">Resultado</strong><br>"Complejo de muerte"<br><span style="color:#888; font-size:0.75rem;">Daño y muerte neuronal progresiva</span></div>
-                    <div style="padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.08);"><strong style="color:#6fcf97;">Solución</strong><br>Inhibidor FP802<br><span style="color:#888; font-size:0.75rem;">Interrumpe la interacción entre ambas</span></div>
-                    <div style="padding:7px 0;"><strong style="color:#f0a500;">Estado</strong><br>Preclínico (ratones)<br><span style="color:#888; font-size:0.75rem;">Requiere ensayos clínicos humanos</span></div>
+        </div>
+
+        <!-- Salud Col 2: Páncreas + Nanopartículas -->
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag salud">Oncología · Cáncer de páncreas · Florida A&amp;M · 30 jul 2026</div>
+                <h2 class="hl-lg">Fármaco experimental bloquea el 90%+ del cáncer de páncreas más letal — avance histórico en Florida</h2>
+                <div class="np-byline">30 jul · Florida A&amp;M University</div>
+                <div class="np-body">
+                    <p>Investigadores del Florida A&amp;M University College of Pharmacy publicaron el 30 de julio en la revista Oncotarget un hallazgo prometedor: el compuesto experimental NSL-YHJ-2-27 — de la familia de inhibidores PCAIs — redujo la viabilidad de las células tumorales e inhibió su migración en más del 90% en cultivos celulares de adenocarcinoma pancreático. El compuesto también desencadenó apoptosis (muerte celular programada) y alteró 88 genes vinculados a la progresión del tumor.</p>
+                    <p>El adenocarcinoma pancreático está asociado a mutaciones KRAS en el 90% de los casos y es uno de los cánceres con menor tasa de supervivencia. El compuesto todavía requiere ensayos en animales y estudios clínicos, pero representa una nueva vía terapéutica para una enfermedad sin opciones efectivas en la actualidad.</p>
+                </div>
+                <div class="np-source">Fuente: <a href="https://www.infobae.com/espana/2026/07/30/un-farmaco-experimental-logra-frenar-el-avance-del-cancer-de-pancreas-mas-comun-en-pruebas-de-laboratorio/" target="_blank">Infobae · 30 jul 2026</a> · Florida A&amp;M / Oncotarget</div>
+            </div>
+
+            <div class="np-article">
+                <div class="np-tag salud">Oncología · Nanopartículas · CIC bioGUNE · UPV · 23 jul 2026</div>
+                <h3 class="hl-md">Nanopartículas de glicanos "vacunan" al sistema inmune contra el cáncer con mayor precisión</h3>
+                <div class="np-byline">23 jul · CIC bioGUNE / Universidad del País Vasco</div>
+                <div class="np-body-sm">Un consorcio liderado por el CIC bioGUNE junto con la Universidad del País Vasco, el IIS Biogipuzkoa, el Champalimaud Centre for the Unknown (Portugal) y la Universitat Rovira i Virgili presentó el 23 de julio un mecanismo innovador: nanopartículas cargadas con glicanos tumorales que actúan como un vehículo de entrega directa al sistema inmunitario. Las partículas presentan las señales del tumor a células dendríticas, linfocitos T y B — como si fuera una vacuna — entrenando la respuesta inmune para reconocer y atacar células cancerosas con mayor precisión, minimizando el daño en tejidos sanos. La tecnología tiene potencial adicional contra el VIH.</div>
+                <div class="np-source">Fuente: <a href="https://saludymedicina.org/post/nanoparticulas-para-atacar-el-cancer-con-mayor-precision" target="_blank">Salud y Medicina · 23 jul 2026</a> · CIC bioGUNE / UPV</div>
+            </div>
+        </div>
+
+        <!-- Salud Col 3: CAR-T Alzheimer + stats -->
+        <div class="np-col">
+            <div class="np-article">
+                <div class="np-tag salud">Alzheimer · CAR-T · Weizmann Institute · WashU · 2026</div>
+                <h2 class="hl-lg">Células CAR-T modificadas eliminan placas de Alzheimer en modelos animales — Weizmann y Washington University</h2>
+                <div class="np-byline">2026 · Weizmann Institute / Washington University</div>
+                <div class="np-body">
+                    <p>En una colaboración entre el Weizmann Institute of Science (Israel) y la Washington University School of Medicine, publicada en PNAS en 2026, investigadores adaptaron la terapia CAR-T — usada contra ciertos tipos de cáncer — para atacar los depósitos de beta-amiloide en el cerebro. En modelos animales, las células T modificadas redujeron significativamente las placas características del Alzheimer y bajaron los marcadores de inflamación neurológica.</p>
+                    <p>El Prof. Ido Amit (Weizmann) y el Prof. Jonathan Kipnis (WashU) lideran la investigación, que abre una nueva frontera en inmunoterapia para enfermedades neurodegenerativas. La terapia CAR-T, que ya mostró resultados notables en ciertos tipos de leucemia y linfoma, podría representar un enfoque completamente distinto para el Alzheimer: en lugar de atacar síntomas, el sistema inmune del propio paciente va directamente contra las causas moleculares.</p>
+                </div>
+                <div class="np-source">Fuente: PNAS 2026 · <a href="https://weizmann.ac.il" target="_blank">Weizmann Institute</a> · Washington University School of Medicine</div>
+            </div>
+
+            <div class="np-stats salud-top">
+                <h4>🔬 Alzheimer — ¿Qué es el "complejo de muerte"?</h4>
+                <div style="font-size:0.78rem; color:#333; line-height:1.85;">
+                    <div style="padding:5px 0; border-bottom:1px solid #d5c9b4;"><strong>Proteína 1:</strong> Receptores NMDA extrasináticos</div>
+                    <div style="padding:5px 0; border-bottom:1px solid #d5c9b4;"><strong>Proteína 2:</strong> Canal iónico TRPM4</div>
+                    <div style="padding:5px 0; border-bottom:1px solid #d5c9b4;"><strong>Resultado:</strong> "Complejo de muerte" neuronal</div>
+                    <div style="padding:5px 0; border-bottom:1px solid #d5c9b4;"><strong>Solución:</strong> Inhibidor FP802 (experimental)</div>
+                    <div style="padding:5px 0;"><strong>Estado:</strong> Preclínico · requiere ensayos clínicos</div>
                 </div>
                 <hr>
-                <h3>📊 Enfermedades neurodeg. — Afectados</h3>
-                <div class="calendar-list">
-                    <div>Alzheimer global <strong style="color:#4a90d9;">~55M</strong></div>
-                    <div>Parkinson global <strong style="color:#4a90d9;">~10M</strong></div>
-                    <div>Demencias totales <strong style="color:#4a90d9;">~78M</strong></div>
-                    <div>Nuevos casos/año <strong style="color:#6fcf97;">10M+</strong></div>
+                <h4>📊 Enfermedades neurodeg.</h4>
+                <div class="np-cal">
+                    <div>Alzheimer global — <strong>~55M</strong></div>
+                    <div>Parkinson global — <strong>~10M</strong></div>
+                    <div>Demencias totales — <strong>~78M</strong></div>
+                    <div>Nuevos casos/año — <strong>10M+</strong></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Salud notas pequeñas -->
-    <div class="small-grid">
+</div><!-- /np-content -->
 
-        <div class="small-article salud-border">
-            <div class="article-tag tag-salud">Oncología · Cáncer de Páncreas · Florida A&amp;M · 30 jul 2026</div>
-            <h3 class="article-title">Fármaco experimental bloquea el 90%+ del cáncer de páncreas más letal — Florida A&amp;M logra avance histórico</h3>
-            <div class="article-body">
-                <p>Investigadores del <strong>Florida A&amp;M University College of Pharmacy</strong> publicaron el 30 de julio en la revista <em>Oncotarget</em> un hallazgo prometedor: el compuesto experimental <strong>NSL-YHJ-2-27</strong> —de la familia de inhibidores PCAIs— redujo la viabilidad de las células tumorales e inhibió su migración en <strong>más del 90%</strong> en cultivos celulares de adenocarcinoma pancreático. También desencadenó apoptosis (muerte celular programada) y alteró 88 genes vinculados a la progresión del tumor. El adenocarcinoma pancreático está asociado a mutaciones KRAS en el 90% de los casos y es uno de los cánceres con menor tasa de supervivencia. El compuesto todavía requiere ensayos en animales y estudios clínicos, pero representa una nueva vía terapéutica para una enfermedad sin opciones efectivas.</p>
-            </div>
-            <div class="article-source">Fuente: <a href="https://www.infobae.com/espana/2026/07/30/un-farmaco-experimental-logra-frenar-el-avance-del-cancer-de-pancreas-mas-comun-en-pruebas-de-laboratorio/" target="_blank">Infobae · 30 jul 2026</a> · Florida A&amp;M University / Oncotarget</div>
-        </div>
-
-        <div class="small-article salud-border">
-            <div class="article-tag tag-salud">Oncología · Nanopartículas · CIC bioGUNE · UPV · 23 jul 2026</div>
-            <h3 class="article-title">Nanopartículas de glicanos "vacunan" al sistema inmune contra el cáncer con mayor precisión</h3>
-            <div class="article-body">
-                <p>Un consorcio liderado por el <strong>CIC bioGUNE</strong> junto con la Universidad del País Vasco, el IIS Biogipuzkoa, el Champalimaud Centre for the Unknown (Portugal) y la Universitat Rovira i Virgili presentó el 23 de julio de 2026 un mecanismo innovador: nanopartículas cargadas con <strong>glicanos tumorales</strong> que actúan como un vehículo de entrega directa al sistema inmunitario. Las partículas presentan las señales del tumor a células dendríticas, linfocitos T y B —como si fuera una vacuna— entrenando la respuesta inmune para reconocer y atacar células cancerosas con mayor precisión, minimizando el daño en tejidos sanos. La tecnología tiene potencial adicional contra el VIH.</p>
-            </div>
-            <div class="article-source">Fuente: <a href="https://saludymedicina.org/post/nanoparticulas-para-atacar-el-cancer-con-mayor-precision" target="_blank">Salud y Medicina · 23 jul 2026</a> · CIC bioGUNE / UPV</div>
-        </div>
-
-        <div class="small-article salud-border">
-            <div class="article-tag tag-salud">Alzheimer · CAR-T · Weizmann Institute · WashU · 2026</div>
-            <h3 class="article-title">Células CAR-T modificadas eliminan placas de Alzheimer en modelos animales — Weizmann y WashU Medicine</h3>
-            <div class="article-body">
-                <p>En una colaboración entre el <strong>Weizmann Institute of Science</strong> (Israel) y la <strong>Washington University School of Medicine</strong>, publicada en <em>PNAS</em> en 2026, investigadores adaptaron la terapia CAR-T —usada contra ciertos tipos de cáncer— para atacar los depósitos de <strong>beta-amiloide</strong> en el cerebro. En modelos animales, las células T modificadas redujeron significativamente las placas características del Alzheimer y bajaron los marcadores de inflamación neurológica. El Prof. <strong>Ido Amit</strong> (Weizmann) y el Prof. <strong>Jonathan Kipnis</strong> (WashU) lideran la investigación, que abre una nueva frontera en inmunoterapia para enfermedades neurodegenerativas.</p>
-            </div>
-            <div class="article-source">Fuente: PNAS 2026 · <a href="https://weizmann.ac.il" target="_blank">Weizmann Institute</a> · Washington University School of Medicine</div>
-        </div>
-
-    </div>
-
-</div>
-
-<footer class="footer">
-    <div class="footer-name">Muskoka Motorsport News</div>
+<footer class="np-footer">
+    <div class="np-footer-name">Muskoka Motorsport News</div>
     <div>Tu fuente diaria del deporte motor mundial</div>
     <div style="margin-top:8px;">© 2026 — Uso personal, no comercial · Elaborado con información de fuentes públicas · Traducción y edición propia</div>
-    <div style="margin-top:4px; font-size:0.7rem;">pablomuskoka.github.io/muskoka-news</div>
+    <div style="margin-top:4px; font-size:0.7rem; color:#555;">pablomuskoka.github.io/muskoka-news</div>
 </footer>
 
+</div><!-- /np-page -->
 </body>
 </html>
